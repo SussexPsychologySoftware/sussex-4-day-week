@@ -23,7 +23,6 @@ collections:
           - label: "Feature Blocks"
             name: "features"
             widget: "list"
-            max: 3
             fields:
               - {label: "Title", name: "title", widget: "string"}
               - {label: "Description", name: "description", widget: "text"}
@@ -39,7 +38,6 @@ collections:
         fields:
           - {label: "Title", name: "title", widget: "string", default: "Success Stories"}
           - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
-          - {label: "Hero Image", name: "image", widget: "image", required: false}
           - label: "Success Stories"
             name: "success_stories"
             widget: "list"
@@ -95,11 +93,9 @@ collections:
         name: "how_it_works"
         fields:
           - {label: "Title", name: "title", widget: "string", default: "How It Works"}
-          - {label: "Hero Image", name: "hero_image", widget: "image", required: false}
           - label: "Process Steps"
             name: "process_steps"
             widget: "list"
-            max: 4
             fields:
               - {label: "Icon/Logo", name: "icon", widget: "image"}
               - {label: "Title", name: "title", widget: "string"}
@@ -120,12 +116,10 @@ collections:
         name: "control_employer"
         fields:
           - {label: "Title", name: "title", widget: "string", default: "Be a Control Employer"}
-          - {label: "Hero Image", name: "hero_image", widget: "image", required: false}
           - {label: "Introduction", name: "intro", widget: "text"}
           - label: "Benefits"
             name: "benefits"
             widget: "list"
-            max: 3
             fields:
               - {label: "Title", name: "title", widget: "string"}
               - {label: "Description", name: "description", widget: "text"}
@@ -136,7 +130,6 @@ collections:
         name: "team"
         fields:
           - {label: "Title", name: "title", widget: "string", default: "The Team"}
-          - {label: "Hero Image", name: "hero_image", widget: "image", required: false}
           - label: "Team Members"
             name: "team_members"
             widget: "list"
@@ -199,7 +192,6 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string", default: "Join the Programme" }
           - { label: "Introduction", name: "intro", widget: "text" }
-          - { label: "Body Content", name: "body", widget: "markdown", required: false }
 
   # Site Settings
   - name: "site_settings"
