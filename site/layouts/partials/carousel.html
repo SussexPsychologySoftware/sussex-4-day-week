@@ -62,6 +62,11 @@
     <!-- Carousel Indicators -->
     <div class="carousel-indicators" id="{{ $carouselId }}-indicators"></div>
 </div>
+{{ end }}
+
+<!-- Only include styles and scripts once per page -->
+{{ if not (.Page.Scratch.Get "carousel-assets-loaded") }}
+{{ .Page.Scratch.Set "carousel-assets-loaded" true }}
 
 <!-- Carousel Styles -->
 <style>
@@ -324,157 +329,167 @@
 
 <!-- Carousel JavaScript -->
 <script>
-    class ImprovedCarousel {
-        constructor(containerSelector) {
-            this.container = document.querySelector(containerSelector);
-            if (!this.container) return;
+    // Use a more robust approach to avoid duplicate declarations
+    if (typeof window.ImprovedCarousel === 'undefined') {
+        window.ImprovedCarousel = class {
+            constructor(containerSelector) {
+                this.container = document.querySelector(containerSelector);
+                if (!this.container) return;
 
-            this.track = this.container.querySelector('.carousel-track');
-            this.slides = this.track.querySelectorAll('.carousel-slide');
-            this.prevBtn = this.container.querySelector('.carousel-prev');
-            this.nextBtn = this.container.querySelector('.carousel-next');
-            this.indicatorsContainer = this.container.parentElement.querySelector('.carousel-indicators');
+                this.track = this.container.querySelector('.carousel-track');
+                this.slides = this.track.querySelectorAll('.carousel-slide');
+                this.prevBtn = this.container.querySelector('.carousel-prev');
+                this.nextBtn = this.container.querySelector('.carousel-next');
+                this.indicatorsContainer = this.container.parentElement.querySelector('.carousel-indicators');
 
-            this.currentIndex = 0;
-            this.slidesPerView = this.getSlidesPerView();
-            this.totalSlides = this.slides.length;
+                this.currentIndex = 0;
+                this.slidesPerView = this.getSlidesPerView();
+                this.totalSlides = this.slides.length;
 
-            this.init();
-        }
-
-        init() {
-            this.createIndicators();
-            this.updateCarousel();
-            this.bindEvents();
-            this.handleResize();
-        }
-
-        getSlidesPerView() {
-            return window.innerWidth >= 768 ? 2 : 1;
-        }
-
-        createIndicators() {
-            if (!this.indicatorsContainer) return;
-
-            const totalPages = Math.ceil(this.totalSlides / this.slidesPerView);
-            this.indicatorsContainer.innerHTML = '';
-
-            for (let i = 0; i < totalPages; i++) {
-                const indicator = document.createElement('button');
-                indicator.classList.add('carousel-indicator');
-                indicator.setAttribute('aria-label', `Go to slide group ${i + 1}`);
-                indicator.addEventListener('click', () => this.goToSlide(i * this.slidesPerView));
-                this.indicatorsContainer.appendChild(indicator);
+                this.init();
             }
-        }
 
-        updateCarousel() {
-            const slideWidth = 100 / this.slidesPerView;
-            const translateX = -(this.currentIndex * slideWidth);
-
-            this.track.style.transform = `translateX(${translateX}%)`;
-
-            // For infinite loop, never disable buttons
-            if (this.prevBtn) this.prevBtn.disabled = false;
-            if (this.nextBtn) this.nextBtn.disabled = false;
-
-            this.updateIndicators();
-        }
-
-        updateIndicators() {
-            if (!this.indicatorsContainer) return;
-
-            const indicators = this.indicatorsContainer.querySelectorAll('.carousel-indicator');
-            const activeIndex = Math.floor(this.currentIndex / this.slidesPerView);
-
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === activeIndex);
-            });
-        }
-
-        goToSlide(index) {
-            this.currentIndex = Math.max(0, Math.min(index, this.totalSlides - this.slidesPerView));
-            this.updateCarousel();
-        }
-
-        nextSlide() {
-            this.currentIndex += this.slidesPerView;
-            if (this.currentIndex >= this.totalSlides) {
-                this.currentIndex = 0; // Loop back to start
+            init() {
+                this.createIndicators();
+                this.updateCarousel();
+                this.bindEvents();
+                this.handleResize();
             }
-            this.updateCarousel();
-        }
 
-        prevSlide() {
-            this.currentIndex -= this.slidesPerView;
-            if (this.currentIndex < 0) {
-                this.currentIndex = Math.max(0, this.totalSlides - this.slidesPerView); // Loop to end
+            getSlidesPerView() {
+                return window.innerWidth >= 768 ? 2 : 1;
             }
-            this.updateCarousel();
-        }
 
-        bindEvents() {
-            if (this.prevBtn) this.prevBtn.addEventListener('click', () => this.prevSlide());
-            if (this.nextBtn) this.nextBtn.addEventListener('click', () => this.nextSlide());
+            createIndicators() {
+                if (!this.indicatorsContainer) return;
 
-            this.container.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') this.prevSlide();
-                if (e.key === 'ArrowRight') this.nextSlide();
-            });
+                const totalPages = Math.ceil(this.totalSlides / this.slidesPerView);
+                this.indicatorsContainer.innerHTML = '';
 
-            this.addTouchSupport();
-        }
+                for (let i = 0; i < totalPages; i++) {
+                    const indicator = document.createElement('button');
+                    indicator.classList.add('carousel-indicator');
+                    indicator.setAttribute('aria-label', `Go to slide group ${i + 1}`);
+                    indicator.addEventListener('click', () => this.goToSlide(i * this.slidesPerView));
+                    this.indicatorsContainer.appendChild(indicator);
+                }
+            }
 
-        addTouchSupport() {
-            let startX = 0;
-            let isDragging = false;
+            updateCarousel() {
+                const slideWidth = 100 / this.slidesPerView;
+                const translateX = -(this.currentIndex * slideWidth);
 
-            this.track.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-                isDragging = true;
-            }, { passive: true });
+                this.track.style.transform = `translateX(${translateX}%)`;
 
-            this.track.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-            }, { passive: false });
+                // For infinite loop, never disable buttons
+                if (this.prevBtn) this.prevBtn.disabled = false;
+                if (this.nextBtn) this.nextBtn.disabled = false;
 
-            this.track.addEventListener('touchend', (e) => {
-                if (!isDragging) return;
-                isDragging = false;
+                this.updateIndicators();
+            }
 
-                const endX = e.changedTouches[0].clientX;
-                const diff = startX - endX;
+            updateIndicators() {
+                if (!this.indicatorsContainer) return;
 
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) {
-                        this.nextSlide();
-                    } else {
-                        this.prevSlide();
+                const indicators = this.indicatorsContainer.querySelectorAll('.carousel-indicator');
+                const activeIndex = Math.floor(this.currentIndex / this.slidesPerView);
+
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === activeIndex);
+                });
+            }
+
+            goToSlide(index) {
+                this.currentIndex = Math.max(0, Math.min(index, this.totalSlides - this.slidesPerView));
+                this.updateCarousel();
+            }
+
+            nextSlide() {
+                this.currentIndex += this.slidesPerView;
+                if (this.currentIndex >= this.totalSlides) {
+                    this.currentIndex = 0; // Loop back to start
+                }
+                this.updateCarousel();
+            }
+
+            prevSlide() {
+                this.currentIndex -= this.slidesPerView;
+                if (this.currentIndex < 0) {
+                    this.currentIndex = Math.max(0, this.totalSlides - this.slidesPerView); // Loop to end
+                }
+                this.updateCarousel();
+            }
+
+            bindEvents() {
+                if (this.prevBtn) this.prevBtn.addEventListener('click', () => this.prevSlide());
+                if (this.nextBtn) this.nextBtn.addEventListener('click', () => this.nextSlide());
+
+                this.container.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') this.prevSlide();
+                    if (e.key === 'ArrowRight') this.nextSlide();
+                });
+
+                this.addTouchSupport();
+            }
+
+            addTouchSupport() {
+                let startX = 0;
+                let isDragging = false;
+
+                this.track.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                }, { passive: true });
+
+                this.track.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                }, { passive: false });
+
+                this.track.addEventListener('touchend', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+
+                    const endX = e.changedTouches[0].clientX;
+                    const diff = startX - endX;
+
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            this.nextSlide();
+                        } else {
+                            this.prevSlide();
+                        }
                     }
-                }
-            }, { passive: true });
+                }, { passive: true });
+            }
+
+            handleResize() {
+                window.addEventListener('resize', () => {
+                    const newSlidesPerView = this.getSlidesPerView();
+                    if (newSlidesPerView !== this.slidesPerView) {
+                        this.slidesPerView = newSlidesPerView;
+                        this.currentIndex = 0;
+                        this.createIndicators();
+                        this.updateCarousel();
+                    }
+                });
+            }
+        };
+
+        // Initialize carousels when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeCarousels);
+        } else {
+            initializeCarousels();
         }
 
-        handleResize() {
-            window.addEventListener('resize', () => {
-                const newSlidesPerView = this.getSlidesPerView();
-                if (newSlidesPerView !== this.slidesPerView) {
-                    this.slidesPerView = newSlidesPerView;
-                    this.currentIndex = 0;
-                    this.createIndicators();
-                    this.updateCarousel();
-                }
+        function initializeCarousels() {
+            const carouselContainers = document.querySelectorAll('.carousel-container');
+            carouselContainers.forEach(container => {
+                new window.ImprovedCarousel(`#${container.id}`);
             });
         }
     }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const carouselContainers = document.querySelectorAll('.carousel-container');
-        carouselContainers.forEach(container => {
-            new ImprovedCarousel(`#${container.id}`);
-        });
-    });
 </script>
 
 {{ end }}
