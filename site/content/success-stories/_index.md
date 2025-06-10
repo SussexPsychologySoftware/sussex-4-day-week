@@ -1,5 +1,5 @@
 ---
-title: "SUCCESS STORIES"
+title: "Success Stories"
 subtitle: "We’ve worked with employers around the UK to support their 4 day week trials. Here are some of their stories:"
 success_stories:
   - logo: "/img/company_logos/archangelsarchitects.png"
