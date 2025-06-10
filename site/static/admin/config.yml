@@ -11,6 +11,7 @@ collections:
       # Homepage
       - file: "site/content/_index.md"
         label: "Homepage"
+        name: "homepage"
         fields:
           - label: "Hero Section"
             name: "hero"
