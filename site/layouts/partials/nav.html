@@ -1,27 +1,160 @@
-<nav data-nav class="flex justify-between items-center center bg-white divider-grey relative">
+{{ $currentPage := . }}
 
-	<!-- Logo -->
-	<a href="/" class="pa3 db mr4 h-100 w3 flex-none">
-		<img src="/img/logo.svg" alt="Kaldi logo" class="br0 db mb0 w-100"/>
-	</a>
-
-	<!-- Primary Nav -->
-	<div data-mobile-menu class="mobile-menu-container">
-		<svg viewBox="0 0 100 80" width="40" height="25" class="mobile-menu-icon">
-			<rect class="menu-icon-top mobile-menu-inner" width="100" height="8"></rect>
-			<rect class="menu-icon-middle mobile-menu-inner" y="30" width="100" height="8"></rect>
-			<rect class="menu-icon-bottom mobile-menu-inner" y="60" width="100" height="8"></rect>
-		</svg>
+<nav class="flex items-center justify-between bg-primary pa3">
+	<!-- Logo Section -->
+	<div class="flex-shrink-0 flex-grow-1">
+		<a href="/" class="db">
+			<img src="/img/logo_2000.webp" alt="{{ .Site.Title }}" class="h3 w-auto"/>
+		</a>
 	</div>
 
-	<ul class="flex b grey-3 nav-menu">
-		<li><a href="/products" class="pa3 no-underline db">Products</a></li>
+	<!-- Main Navigation - Center -->
+	<div class="flex-shrink-0 nav-container">
+		<ul class="flex justify-center items-center list ma0 pa0 nav-main">
+			<!-- Navigation items with progressive hiding -->
+			<li class="nav-item nav-show-xl"><a href="/" class="pa1 mh1 no-underline db nowrap {{ if .IsHome }}bg-white primary{{ else }}white{{ end }}">HOME</a></li>
+			<li class="nav-item nav-show-xl"><a href="/success-stories/" class="pa1 mh1 no-underline db nowrap {{ if or (eq $currentPage.Section "success-stories") }}bg-white primary{{ else }}white{{ end }}">SUCCESS STORIES</a></li>
+			<li class="nav-item nav-show-lg"><a href="/how-it-works/" class="pa1 mh1 no-underline db nowrap {{ if or (eq $currentPage.Section "how-it-works") }}bg-white primary{{ else }}white{{ end }}">HOW IT WORKS</a></li>
+			<li class="nav-item nav-show-md"><a href="/control-employer/" class="pa1 mh1 no-underline db nowrap {{ if or (eq $currentPage.Section "control-employer") }}bg-white primary{{ else }}white{{ end }}">BE A CONTROL EMPLOYER</a></li>
+			<li class="nav-item nav-show-sm"><a href="/team/" class="pa1 mh1 no-underline db nowrap {{ if or (eq $currentPage.Section "team") }}bg-white primary{{ else }}white{{ end }}">THE TEAM</a></li>
+			<li class="nav-item nav-show-xs"><a href="/contact/" class="pa1 mh1 no-underline db nowrap {{ if or (eq $currentPage.Section "contact") }}bg-white primary{{ else }}white{{ end }}">CONTACT US</a></li>
+			<li class="nav-item nav-show-xs2"><a href="/resources/" class="pa1 mh1 no-underline db nowrap {{ if or (eq $currentPage.Section "resources") }}bg-white primary{{ else }}white{{ end }}">RESOURCES</a></li>
+			<li class="nav-item nav-show-xs3"><a href="/signup/" class="pa1 mh1 no-underline db nowrap {{ if or (eq $currentPage.Section "signup") }}bg-white primary{{ else }}white{{ end }}">JOIN</a></li>
 
-		<li><a href="/values" class="pa3 no-underline db">Values</a></li>
+			<!-- Dropdown menu - shows when any items are hidden -->
+			<li class="nav-more relative">
+				<div class="dropdown-container">
+					<button class="pa1 mh1 white bn pointer dropdown-toggle" style="background-color: inherit;" aria-expanded="false" aria-haspopup="true">
+						<span class="nav-more-text">MORE</span>
+						<span class="nav-more-mobile">NAVIGATION</span>
+						<span class="ml1 f7">▼</span>
+					</button>
+					<ul class="dropdown-menu absolute bg-white shadow-2 list ma0 pa0 dn">
+						<li class="nav-hide-mobile"><a href="/" class="pa2 no-underline db hover-bg-near-white {{ if .IsHome }}bg-near-white dark-gray{{ else }}dark-gray{{ end }}">HOME</a></li>
+						<li class="nav-hide-mobile"><a href="/success-stories/" class="pa2 no-underline db hover-bg-near-white {{ if or (eq $currentPage.Section "success-stories") }}bg-near-white dark-gray{{ else }}dark-gray{{ end }}">SUCCESS STORIES</a></li>
+						<li class="nav-hide-lg"><a href="/how-it-works/" class="pa2 no-underline db hover-bg-near-white {{ if or (eq $currentPage.Section "how-it-works") }}bg-near-white dark-gray{{ else }}dark-gray{{ end }}">HOW IT WORKS</a></li>
+						<li class="nav-hide-md"><a href="/control-employer/" class="pa2 no-underline db hover-bg-near-white {{ if or (eq $currentPage.Section "control-employer") }}bg-near-white dark-gray{{ else }}dark-gray{{ end }}">BE A CONTROL EMPLOYER</a></li>
+						<li class="nav-hide-sm"><a href="/team/" class="pa2 no-underline db hover-bg-near-white {{ if or (eq $currentPage.Section "team") }}bg-near-white dark-gray{{ else }}dark-gray{{ end }}">THE TEAM</a></li>
+						<li class="nav-hide-xs"><a href="/contact/" class="pa2 no-underline db hover-bg-near-white {{ if or (eq $currentPage.Section "contact") }}bg-near-white dark-gray{{ else }}dark-gray{{ end }}">CONTACT US</a></li>
+						<li class="nav-hide-xs2"><a href="/resources/" class="pa2 no-underline db hover-bg-near-white {{ if or (eq $currentPage.Section "resources") }}bg-near-white dark-gray{{ else }}dark-gray{{ end }}">RESOURCES</a></li>
+						<li class="nav-hide-xs3"><a href="/signup/" class="pa2 no-underline db hover-bg-near-white {{ if or (eq $currentPage.Section "signup") }}bg-near-white dark-gray{{ else }}dark-gray{{ end }}">JOIN</a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</div>
 
-		<li><a href="/post" class="pa3 no-underline db">Blog</a></li>
-
-		<li><a href="/contact" class="pa3 no-underline db">Contact</a></li>
-	</ul>
-
+	<!-- Social Icons Section - Right -->
+	<div class="flex-shrink-0 flex-grow-1 tr">
+		{{ range .Site.Data.navigation.social }}
+		<a href="{{ .url }}" target="_blank" title="{{ .platform }}" class="white pa2 dib">
+			<div class="w1 h1">{{ .svg | safeHTML }}</div>
+		</a>
+		{{ end }}
+	</div>
 </nav>
+
+<style>
+	/* Typography - using Tachyons-compatible classes */
+	.nav-main a, .dropdown-toggle {
+		white-space: nowrap;
+		font-size: .875rem;
+		font-weight: 300;
+		letter-spacing: .05em;
+		text-transform: uppercase;
+	}
+
+	/* Navigation container */
+	.nav-container {
+		max-width: 60%;
+	}
+
+	/* Default states */
+	.nav-more { display: none; }
+	.nav-more-text { display: inline; }
+	.nav-more-mobile { display: none; }
+	.nav-hide-mobile, .nav-hide-lg, .nav-hide-md, .nav-hide-sm, .nav-hide-xs, .nav-hide-xs2, .nav-hide-xs3 {
+		display: none;
+	}
+
+	/* Progressive collapse breakpoints */
+	@media (max-width: 1600px) {
+		.nav-show-xs3 { display: none; }
+		.nav-hide-xs3 { display: block; }
+		.nav-more { display: block; }
+	}
+
+	@media (max-width: 1450px) {
+		.nav-show-xs2 { display: none; }
+		.nav-hide-xs2 { display: block; }
+	}
+
+	@media (max-width: 1300px) {
+		.nav-show-xs { display: none; }
+		.nav-hide-xs { display: block; }
+	}
+
+	@media (max-width: 1150px) {
+		.nav-show-sm { display: none; }
+		.nav-hide-sm { display: block; }
+	}
+
+	@media (max-width: 1000px) {
+		.nav-show-md { display: none; }
+		.nav-hide-md { display: block; }
+	}
+
+	@media (max-width: 850px) {
+		.nav-show-lg { display: none; }
+		.nav-hide-lg { display: block; }
+	}
+
+	/* Mobile: show all items in dropdown */
+	@media (max-width: 700px) {
+		.nav-show-xl { display: none; }
+		.nav-hide-mobile { display: block; }
+		.nav-more-text { display: none; }
+		.nav-more-mobile { display: inline; }
+	}
+
+	/* Dropdown positioning */
+	.dropdown-container { position: relative; }
+
+	.dropdown-menu {
+		min-width: 200px;
+		top: 100%;
+		right: 0;
+		left: auto;
+		z-index: 999;
+		margin-top: .25rem;
+		border-radius: .25rem;
+		overflow: hidden;
+	}
+
+	/* Dropdown interaction */
+	.dropdown-container:hover .dropdown-menu,
+	.dropdown-container:focus-within .dropdown-menu {
+		display: block !important;
+	}
+
+	/* Touch-friendly for mobile */
+	@media (hover: none) and (pointer: coarse) {
+		.dropdown-toggle {
+			padding: .5rem 1rem;
+		}
+
+		.dropdown-menu a {
+			padding: .75rem 1rem;
+		}
+	}
+
+	/* Hover state using Tachyons classes */
+	.hover-bg-near-white:hover {
+		background-color: #f4f4f4;
+	}
+
+	/* Active page styling in dropdown */
+	.dropdown-menu .bg-near-white {
+		font-weight: 500;
+	}
+</style>

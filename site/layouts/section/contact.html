@@ -1,24 +1,35 @@
 {{ define "main" }}
 
-<div class="ph3 bg-off-white">
-	<div class="center mw6 pv3">
-
-		<img src="{{ .Params.logo }}" alt="" class="db w4 center pv4">
-
-		{{ .Content }}
-
-		<div class="flex-ns mb3">
-	        	{{ range .Params.contact_entries }}
-				<div>
-					<h4 class="f4 b lh-title mb2 primary">{{ .heading }}</h4>
-					<p>{{ .text }}</p>
-				</div>
-			{{ end }}
-		</div>
-
-		{{ partial "contact-form" . }}
-
+<div class="ph3 bg-off-white min-vh-100 center mw7 pv4">
+	<!-- Page Header -->
+	<div class="tc pb4">
+		<h1 class="f4 f3-l fw3 lh-title mb3 primary ttu">{{ .Title }}</h1>
 	</div>
+
+	<!-- Contact Information -->
+	{{ if or .Params.email .Params.instructions }}
+	<div class="tc center mb4">
+		{{ if .Params.email }}
+		<p class="f6 fw3 mb3 center">
+			Email: <a href="mailto:{{ .Params.email }}" class="link primary">{{ .Params.email }}</a>
+		</p>
+		{{ end }}
+
+		{{ if .Params.instructions }}
+		<p class="f6 fw3 lh-copy measure center">{{ .Params.instructions }}</p>
+		{{ end }}
+	</div>
+	{{ end }}
+
+	<!-- Page Content -->
+	{{ if .Content }}
+	<div class="lh-copy measure center mb4 f6 fw3">
+		{{ .Content }}
+	</div>
+	{{ end }}
+
+	<!-- Contact Form -->
+	{{ partial "contact-form" . }}
 </div>
 
 {{ end }}

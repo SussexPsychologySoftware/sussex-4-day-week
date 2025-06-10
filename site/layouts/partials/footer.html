@@ -1,50 +1,85 @@
-<footer class="bg-black ph3 pv4 white">
+<!-- File: site/layouts/partials/footer.html -->
+<footer class="bg-primary white pv4">
+	<div class="center mw7 pv3 ph3">
+		<!-- Social Icons Section -->
+		{{ if .Site.Data.footer.social }}
+		<div class="tc mb3">
+			{{ range .Site.Data.footer.social }}
+			<a href="{{ .url }}" target="_blank" title="{{ .platform }}" class="white dib mh2 f4">
+				{{ if eq .platform "LinkedIn" }}
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w1 h1 fill-white">
+					<path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path>
+				</svg>
+				{{ else if .icon }}
+				<img src="{{ .icon }}" alt="{{ .platform }}" class="w1 h1" />
+				{{ else }}
+				{{ .platform }}
+				{{ end }}
+			</a>
+			{{ end }}
+		</div>
+		{{ end }}
 
-	<div class="mw7 center pt3">
+		<!-- Newsletter Section -->
+		<div class="tc mb4">
+			<p class="f6 lh-copy mb3 white tc center">
+				{{ .Site.Data.footer.newsletter_text | default "Sign up with your email address to receive news and updates." }}
+			</p>
 
-		<div class="measure-narrow center mb4">
-
-			<img src="/img/logo.svg" alt="Kaldi logo" class="db w4 center mb4 br0">
-			<p class="f3 lh-title light-gray b tc mb2">{{ .Site.Data.footer.title }}</p>
-			<p>{{ .Site.Data.footer.blurb }}</p>
-
-			{{ partial "newsletter-form" . }}
-
+			<!-- Newsletter Form -->
+			<div class="tc">
+				<form name="newsletter" method="POST" netlify class="di">
+					<input type="hidden" name="form-name" value="newsletter" />
+					<input type="email" name="email" placeholder="Email Address" class="f6 pv2 ph3 mr1 ba br2 b--light-gray bg-white gray w5" required />
+					<button type="submit" class="bg-primary white f6 br2 ph3 pv2 ttu pointer bn">
+						<span>Subscribe</span>
+					</button>
+					<!-- Honeypot field -->
+					<input type="text" name="address" class="dn">
+				</form>
+			</div>
 		</div>
 
-		<div class="flex-ns justify-between">
-
-			<div>
-				<h3 class="f4 b lh-title mb1 primary">Kaldi</h3>
-				<ul class="mb3">
-					<li><a href="/" class="link">Home</a></li>
-					<li><a href="/products" class="link">Our products</a></li>
-					<li><a href="/values" class="link">About</a></li>
-					<li><a href="/post" class="link">Blog</a></li>
-					<li><a href="/contact" class="link">Contact</a></li>
-				</ul>
-			</div>
-
-			<div>
-				<h3 class="f4 b lh-title mb1 primary">Find out more</h3>
-				<ul class="mb3">
-					<li><a href="/post/jamaica-blue/" class="link">Latest offers</a></li>
-					<li><a href="/contact" class="link">Schedule an appointment</a></li>
-				</ul>
-			</div>
-
-			<div>
-				<h3 class="f4 b lh-title mb2 primary">Social media</h3>
-				<ul class="mhn2">
-					{{ partial "social-icon" (dict "link" "#" "svg" "icons-facebook" "alt" "Kaldi on Facebook") }}
-					{{ partial "social-icon" (dict "link" "#" "svg" "icons-twitter" "alt" "Kaldi on Twitter") }}
-					{{ partial "social-icon" (dict "link" "#" "svg" "icons-instagram" "alt" "Kaldi on Instagram") }}
-					{{ partial "social-icon" (dict "link" "#" "svg" "icons-vimeo" "alt" "Kaldi on Vimeo") }}
-				</ul>
-			</div>
-
+		<!-- Copyright Section -->
+		<div class="tc">
+			<p class="f6 ma0 white tc center">
+				© Copyright {{ now.Format "2006" }} {{ .Site.Data.footer.copyright_name | default "Sussex 4 Day Week" }}. All Rights Reserved.
+			</p>
 		</div>
 	</div>
-
 </footer>
 
+<style>
+	/* Only essential styles not covered by Tachyons */
+	.newsletter-form input[type="email"]:focus {
+		border-color: #357edd;
+		outline: none;
+	}
+
+	.newsletter-form input[type="email"]::placeholder {
+		color: #777;
+	}
+
+	.newsletter-form button:hover {
+		opacity: 0.9;
+	}
+
+	/* Align button with input field */
+	.newsletter-form input,
+	.newsletter-form button {
+		vertical-align: top;
+	}
+
+	/* Mobile responsiveness */
+	@media (max-width: 25rem) {
+		.newsletter-form input {
+			display: block;
+			margin: 0 auto 0.5rem auto;
+		}
+
+		.newsletter-form button {
+			display: block;
+			margin: 0 auto;
+		}
+	}
+</style>

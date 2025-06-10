@@ -1,33 +1,40 @@
-<!-- Contact -->
-<div class="mb4">
-  <h4 class="f3 b lh-title mb3 tc">Drop us a line below</h4>
+<div class="mt4 center" style="max-width: 500px;">
+  <form name="{{ .Params.form.name | default "contact" }}" method="POST" netlify class="form form--custom">
+  <input type="hidden" name="form-name" value="{{ .Params.form.name | default "contact" }}" />
 
-  <form action="">
-    <div class="flex-l mhn1-l">
-      <!-- Name -->
-      <div class="ph1-l w-50-l">
-        <fieldset>
-          <input type="text" id="name" name="name" placeholder="Name" class="w-100 mb2">
-          <label for="name">Name</label>
-        </fieldset>
-      </div>
-      <!-- Email -->
-      <div class="ph1-l w-50-l">
-        <fieldset>
-          <input type="email" id="email" name="email" placeholder="Email" class="w-100 mb2">
-          <label for="email">Email</label>
-        </fieldset>
-      </div>
-    </div>
+  <fieldset class="fieldset">
+    <legend class="legend f5 fw3 mb3 tc">{{ .Params.form.name | default "Contact Us" }}</legend>
 
-    <!-- Message -->
-    <fieldset>
-      <textarea id="message" name="message" placeholder="Your message" rows="8" cols="80" class="w-100"></textarea>
-      <label for="message">Your message</label>
-    </fieldset>
-    <!-- Button -->
-    <div class="tc">
-      <button type="submit" class="btn w-100 w-auto-ns raise">Submit</button>
-    </div>
+    <ul class="form-fields list pa0">
+      <li class="mb3">
+        <label class="label f6 fw3 db mb2" for="contact-name">Name:<span class="red" title="Required">*</span></label>
+        <input type="text" id="contact-name" name="name" class="text-input w-100 f6 pv2 ph3 border-box ba br2 b--white primary" required />
+      </li>
+
+      <li class="mb3">
+        <label class="label f6 fw3 db mb2" for="contact-email">Email Address:<span class="red" title="Required">*</span></label>
+        <input type="email" id="contact-email" name="email" class="text-input w-100 f6 pv2 ph3 border-box ba br2 b--white primary" required />
+      </li>
+
+      <li class="mb3">
+        <label class="label f6 fw3 db mb2" for="contact-message">Message:<span class="red" title="Required">*</span></label>
+        <textarea id="contact-message" name="message" rows="5" class="text-input w-100 f6 pv2 ph3 border-box ba br2 b--white primary" required></textarea>
+      </li>
+
+      <li class="tc mb3">
+        <button type="submit" class="bg-primary white f6 link br2 ph3 pv2 no-underline ttu">
+          <span>{{ .Params.form.submit_text | default "Send Message" }}</span>
+        </button>
+      </li>
+
+      <li class="tc">
+        <small class="f7 gray lh-copy">
+          This site is protected by reCAPTCHA and the Google
+          <a href="https://policies.google.com/privacy" target="_blank" class="link">Privacy Policy</a> and
+          <a href="https://policies.google.com/terms" target="_blank" class="link">Terms of Service</a> apply.
+        </small>
+      </li>
+    </ul>
+  </fieldset>
   </form>
 </div>

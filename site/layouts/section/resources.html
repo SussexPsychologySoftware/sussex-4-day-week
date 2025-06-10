@@ -1,0 +1,64 @@
+{{ define "main" }}
+
+<div class="ph3 bg-off-white min-vh-100">
+    <div class="center mw7 pv4">
+        <!-- Page Header -->
+        <div class="tc pb4">
+            <h1 class="f4 f3-l fw3 lh-title mb3 primary ttu">{{ .Title }}</h1>
+        </div>
+
+        <!-- Hero Image -->
+        {{ if .Params.hero_image }}
+        <div class="tc mb4">
+            <img src="{{ .Params.hero_image | default "/img/resources_hero.webp" }}" alt="Resources" class="w-75 w-60-m w-50-l br2 db center" />
+        </div>
+        {{ end }}
+
+        <!-- Page Content -->
+        {{ if .Content }}
+        <div class="lh-copy measure center mb4 f6 fw3">
+            {{ .Content }}
+        </div>
+        {{ end }}
+
+        <!-- PDF Guide Section -->
+        {{ if .Params.pdf_guide }}
+        <div class="pv3 tc">
+            <div class="bg-white pa4 br2 mw6 center ba b--light-gray">
+                <h2 class="f4 fw3 lh-title mb3 primary ttu">{{ .Params.pdf_guide.title }}</h2>
+                <p class="f6 fw3 lh-copy mb4">{{ .Params.pdf_guide.description }}</p>
+                <a href="{{ .Params.pdf_guide.file }}" class="btn bg-primary white f6 link br1 ph3 pv2 mb3 dib" download>
+                    {{ .Params.pdf_guide.button_text }}
+                </a>
+            </div>
+        </div>
+
+        {{ if .Params.pdf_guide.bottom_text }}
+        <div class="tc mb4">
+            <p class="f6 fw3 lh-copy measure center">{{ .Params.pdf_guide.bottom_text }}</p>
+        </div>
+        {{ end }}
+        {{ end }}
+
+        <!-- Partners Section -->
+        {{ if .Params.partners }}
+        <div class="pv3">
+            <div class="cf">
+                {{ range .Params.partners }}
+                <div class="fl w-100 w-50-l pa3 tc">
+                    <img src="{{ .logo }}" alt="{{ .name }}" class="w-100 h3 db center mb2" style="object-fit: contain;" />
+                    <p class="f6 fw3">
+                        The <a href="{{ .website }}" class="link primary">{{ .name }}</a> {{ .text }}
+                        {{ if .extra_link }}
+                        <a href="{{ .extra_link }}" class="link primary">{{ .redirect_text }}</a>
+                        {{ end }}
+                    </p>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+
+{{ end }}

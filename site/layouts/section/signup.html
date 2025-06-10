@@ -1,0 +1,92 @@
+{{ define "main" }}
+
+<div class="ph3 bg-off-white min-vh-100 center mw7 pv4">
+    <!-- Page Header -->
+    <div class="tc pb4">
+        <h1 class="f4 f3-l fw3 lh-title mb3 primary ttu">{{ .Title }}</h1>
+    </div>
+
+    <!-- Sign-up Form -->
+    <div class="center" style="max-width: 500px;">
+        <form name="sussex-signup" method="POST" netlify class="form form--custom">
+            <input type="hidden" name="form-name" value="sussex-signup" />
+
+            <fieldset class="fieldset">
+                <ul class="form-fields list pa0">
+                    <li class="mb3">
+                        <label class="label f6 fw6 db mb2" for="name">Name:<span class="red" title="Required">*</span></label>
+                        <input type="text" id="name" name="name" class="text-input w-100 f6 pv2 ph3 border-box ba br2 b--white primary" required />
+                    </li>
+
+                    <li class="mb3">
+                        <label class="label f6 fw6 db mb2" for="email">Email Address:<span class="red" title="Required">*</span></label>
+                        <input type="email" id="email" name="email" class="text-input w-100 f6 pv2 ph3 border-box ba br2 b--white primary" required />
+                    </li>
+
+                    <li class="mb3">
+                        <label class="label f6 fw6 db mb2" for="job_title">Job Title:<span class="red" title="Required">*</span></label>
+                        <input type="text" id="job_title" name="job_title" class="text-input w-100 f6 pv2 ph3 border-box ba br2 b--white primary" required />
+                    </li>
+
+                    <li class="mb3">
+                        <label class="label f6 fw6 db mb2" for="company_name">Company Name:<span class="red" title="Required">*</span></label>
+                        <input type="text" id="company_name" name="company_name" class="text-input w-100 f6 pv2 ph3 border-box ba br2 b--white primary" required />
+                    </li>
+
+                    <li class="mb3">
+                        <label class="label f6 fw6 db mb2" for="employee_count">Number of Employees:<span class="red" title="Required">*</span></label>
+                        <input type="text" id="employee_count" name="employee_count" class="text-input w-100 f6 pv2 ph3 border-box ba br2 b--white primary" required />
+                    </li>
+
+                    <li class="mb3">
+                        <label class="label f6 fw6 db mb2" for="company_location">Company Location:<span class="red" title="Required">*</span></label>
+                        <input type="text" id="company_location" name="company_location" class="text-input w-100 f6 pv2 ph3 border-box ba br2 b--white primary" required />
+                    </li>
+
+                    <li class="mb3">
+                        <label class="label f6 fw6 db mb2">What type of new working schedule are you considering?<span class="red" title="Required">*</span></label>
+                        <div class="mt2 tl">
+                            {{ range $options := slice
+                            (dict "value" "4_day_week" "label" "4 day week")
+                            (dict "value" "9_day_fortnight" "label" "9 day fortnight")
+                            (dict "value" "shorter_days" "label" "Shorter days")
+                            (dict "value" "compressed_hours" "label" "Compressed hours [same total hours, fewer days]")
+                            (dict "value" "combination" "label" "A combination of these")
+                            (dict "value" "not_sure" "label" "Not sure yet")
+                            (dict "value" "control_employer" "label" "No change, interested as a 'control' employer")
+                            }}
+                            <label class="db f6 fw3 mb2">
+                                <input type="checkbox" name="schedule_type" value="{{ .value }}" class="mr2" />
+                                {{ .label }}
+                            </label>
+                            {{ end }}
+                        </div>
+                    </li>
+
+                    <li class="mb3">
+                        <label class="label f6 fw6 db mb2" for="additional_info">Anything else you'd like to tell us?</label>
+                        <textarea id="additional_info" name="additional_info" rows="4" class="text-input w-100 f6 pv2 ph3 border-box ba br2 b--white primary"></textarea>
+                    </li>
+
+                    <li class="mb3">
+                        <label class="db f6 fw3">
+                            <input type="checkbox" name="newsletter_signup" value="yes" class="mr2" />
+                            Tick to receive occasional news and updates from the S4DW team and information about the 4 day week
+                        </label>
+                    </li>
+
+                    <li class="tc mb3">
+                        <button type="submit" class="bg-primary white f6 link br2 ph3 pv2 no-underline ttu">
+                            <span>Register Here</span>
+                        </button>
+                    </li>
+
+                    <li class="tc">
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+{{ end }}

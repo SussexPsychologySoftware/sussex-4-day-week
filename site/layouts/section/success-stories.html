@@ -1,0 +1,95 @@
+{{ define "main" }}
+
+<div class="ph3 bg-off-white min-vh-100">
+    <div class="center mw7 pv4">
+        <!-- Page Header -->
+        <div class="tc pb4">
+            <h1 class="f4 f3-l fw3 lh-title mb3 primary ttu">{{ .Title }}</h1>
+            {{ if .Params.subtitle }}
+            <p class="f6 fw3 mw7 center">{{ .Params.subtitle }}</p>
+            {{ end }}
+        </div>
+
+        <!-- Success Stories Carousel -->
+        {{ if .Params.success_stories }}
+        {{ partial "carousel.html" (dict
+        "id" "success-stories"
+        "type" "testimonials"
+        "items" .Params.success_stories
+        ) }}
+        {{ end }}
+
+        <!-- Trial Results Carousel -->
+        {{ if .Params.trial_results.logos }}
+        <div class="pv4 bg-grey-1">
+            <div class="center mw7 ph3">
+                {{ partial "carousel.html" (dict
+                "id" "trial-results"
+                "type" "trial-results"
+                "heading" (.Params.trial_results.heading | default "Trial Results")
+                "items" .Params.trial_results.logos
+                ) }}
+            </div>
+        </div>
+        {{ end }}
+
+        <!-- Participating Employers -->
+        {{ if .Params.participating_employers.logos }}
+        <div class="pv4">
+            <h2 class="f4 fw3 lh-title mb4 tc primary ttu">{{ .Params.participating_employers.heading }}</h2>
+            <div class="employers-grid">
+                {{ range .Params.participating_employers.logos }}
+                <div class="employer-logo-item">
+                    <div class="tc">
+                        <a href="{{ .link }}">
+                            <img src="{{ .logo }}" alt="{{ .name }}" class="employer-logo" />
+                        </a>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+        <!-- Research Findings Section -->
+        {{ if .Params.research_findings }}
+        <!-- Blue Divider -->
+        <div class="tc pv3">
+            <div class="bg-primary" style="height: 1px; width: 100%;"></div>
+        </div>
+
+        <div class="pv4">
+            <div class="tc pb4">
+                <h2 class="f4 f3-l fw3 lh-title mb3 primary ttu">{{ .Params.research_findings.heading }}</h2>
+                <p class="f6 fw3 mw7 center">{{ .Params.research_findings.description }}</p>
+            </div>
+            <div class="tc">
+                <img src="{{ .Params.research_findings.image }}"
+                     alt="{{ .Params.research_findings.image_alt }}"
+                     class="w-100 mw-none"
+                     style="max-width: 95%;" />
+            </div>
+        </div>
+        {{ end }}
+
+        <!-- Consultant Quote Section -->
+        {{ if .Params.consultant_quote }}
+        <!-- Blue Divider -->
+        <div class="tc pv3">
+            <div class="bg-primary" style="height: 1px; width: 100%;"></div>
+        </div>
+
+        <div class="pv4">
+            <div class="center mw6">
+                <blockquote class="quote-block bg-white br3 pa4 shadow-2 ma0">
+                    <p class="f5 lh-copy i mb3 dark-gray">"{{ .Params.consultant_quote.quote }}"</p>
+                    <cite class="f6 fw3 ttu tracked primary db tr">- {{ .Params.consultant_quote.attribution }}</cite>
+                </blockquote>
+            </div>
+        </div>
+        {{ end }}
+
+    </div>
+</div>
+
+{{ end }}

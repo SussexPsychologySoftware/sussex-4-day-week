@@ -1,4 +1,10 @@
 {
-    "title": "Newsletter subscribe",
-    "blurb": "Get awesome news from us in your inbox every two weeks. Be the first to learn about new products."
+    "newsletter_text": "Sign up with your email address to receive news and updates.",
+    "copyright_name": "Sussex 4 Day Week",
+    "social": [
+        {
+            "platform": "LinkedIn",
+            "url": "https://www.linkedin.com/in/dr-charlotte-rae-phd-a921a9255/?originalSubdomain=uk"
+        }
+    ]
 }

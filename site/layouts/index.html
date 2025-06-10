@@ -1,13 +1,127 @@
 {{ define "main" }}
 
-{{ partial "jumbotron" (dict "imageUrl" .Params.image "title" .Title "subtitle" .Params.subtitle) }}
+<!-- Hero Section -->
+{{ if .Params.hero }}
+<div class="hero pt3 pt4-l ph3">
+    <div class="mw9 center ph3 tc">
+            <h1 class="f4 f3-l fw3 lh-title mb3 primary ttu">
+                {{ .Params.hero.slogan }}
+            </h1>
+            <p class="f6 fw3 mw7 center">{{ replace .Params.hero.description ". If you want" ".<br><br>If you want" | safeHTML }}</p>
+    </div>
+</div>
+{{ end }}
 
-{{ partial "short-text" .Params.blurb}}
+<!-- Feature Blocks Section -->
+{{ if .Params.features }}
+<div class="pb4 pt2 pb5-l pt3-l bg-white">
+    <div class="mw7 center">
+        {{ range $index, $feature := .Params.features }}
 
-{{ partial "2-up" .Params }}
+        <!-- Blue Divider -->
+        <div class="tc pv3">
+            <div class="bg-primary" style="height: 1px; width: 100%;"></div>
+        </div>
 
-{{ partial "text-and-image" (dict "heading" .Params.values.heading "text" .Params.values.text "buttonText" "Read more" "buttonLink" "/values") }}
+        <!-- Feature Block -->
+        <div class="feature-block pt3 pb4-l ph3 ph0-l {{ if eq (mod $index 2) 1 }}reverse-desktop{{ end }}">
 
-{{ partial "blog" . }}
+            <!-- Media Container -->
+            <div class="feature-media mb3 mb0-l">
+                {{ if $feature.image }}
+                <img src="{{ $feature.image }}" alt="{{ $feature.title }}" class="w-100 db feature-img" />
+                {{ else if $feature.youtube_embed_src }}
+                <div class="video-container">
+                    <iframe src="{{ $feature.youtube_embed_src }}" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                {{ end }}
+            </div>
+
+            <!-- Content Container -->
+            <div class="feature-content">
+                <h3 class="f4 b lh-title mb2 primary ttu fw3">{{ $feature.title }}</h3>
+                <p class="f6 lh-copy fw3">{{ $feature.description }}</p>
+                {{ if $feature.link_url }}
+                <a href="{{ $feature.link_url }}" class="btn bg-primary white f6 link br1 ph3 pv2 mb3 dib">
+                    {{ $feature.link_text | default "Learn More" }}
+                </a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+
+<style>
+    /* Video responsive container */
+    .video-container {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Feature images */
+    .feature-img {
+        max-height: 300px;
+        object-fit: cover;
+    }
+
+    /* Desktop layout - side by side */
+    @media screen and (min-width: 60em) {
+        .feature-block {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .feature-media,
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-img {
+            max-height: 400px;
+        }
+
+        /* Reverse layout for odd indices (alternating sides) */
+        .reverse-desktop {
+            flex-direction: row-reverse;
+        }
+    }
+
+    /* Mobile layout - vertical stacking with alternating order */
+    @media screen and (max-width: 60em) {
+        .feature-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Even features (0, 2, 4...) - image first, then text */
+        .feature-block:nth-child(4n+2) {
+            flex-direction: column;
+        }
+
+        /* Odd features (1, 3, 5...) - text first, then image */
+        .feature-block:nth-child(4n+4) {
+            flex-direction: column-reverse;
+        }
+
+        .feature-block:nth-child(4n+4) .feature-content {
+            margin-bottom: 1rem;
+        }
+    }
+</style>
 
 {{ end }}

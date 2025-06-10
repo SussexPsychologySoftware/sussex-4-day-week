@@ -1,0 +1,480 @@
+{{ $carouselId := .id | default "carousel" }}
+{{ $items := .items }}
+{{ $type := .type | default "default" }}
+{{ $heading := .heading }}
+
+{{ if $items }}
+<div class="pb5">
+    {{ if $heading }}
+    <h2 class="f4 fw3 lh-title mb4 tc primary ttu">{{ $heading }}</h2>
+    {{ end }}
+
+    <div class="carousel-container" id="{{ $carouselId }}-container" data-carousel-type="{{ $type }}">
+        <div class="carousel-track" id="{{ $carouselId }}-track">
+            {{ range $items }}
+            <div class="carousel-slide">
+                {{ if eq $type "testimonials" }}
+                <!-- Testimonial Card -->
+                <div class="success-card">
+                    <div class="logo-container">
+                        {{ if .logo }}
+                        <img src="{{ .logo }}" alt="{{ .company }}" class="company-logo" />
+                        {{ end }}
+                    </div>
+                    <div class="content-container">
+                        <div class="company-name">{{ .company }}</div>
+                        <div class="quote-text">"{{ .quote }}"</div>
+                        <div class="attribution">— {{ .attribution }}</div>
+                    </div>
+                </div>
+                {{ else if eq $type "trial-results" }}
+                <!-- Trial Results Card -->
+                <div class="trial-result-card">
+                    {{ if .logo }}
+                    <div class="tl mb3">
+                        <img src="{{ .logo }}" alt="{{ .company }}" class="company-logo" />
+                    </div>
+                    {{ end }}
+                    <h3 class="f5 fw3 lh-title mb2 tl primary ttu">{{ .company }}</h3>
+                    <p class="f6 fw3 lh-copy mb2 tl"><strong>Who are they?</strong> {{ .who }}</p>
+                    <p class="f6 fw3 lh-copy mb3 tl"><strong>What did they learn?</strong> {{ .learnings }}</p>
+                    {{ if .link }}
+                    <div class="tl mt-auto">
+                        <a href="{{ .link }}" class="f6 link primary hover-underline" target="_blank" rel="noopener">Visit website</a>
+                    </div>
+                    {{ end }}
+                </div>
+                {{ else }}
+                <!-- Default Card -->
+                <div class="default-card">
+                    {{ .content }}
+                </div>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+
+        <!-- Navigation Buttons -->
+        <button class="carousel-btn carousel-prev" aria-label="Previous slide">‹</button>
+        <button class="carousel-btn carousel-next" aria-label="Next slide">›</button>
+    </div>
+
+    <!-- Carousel Indicators -->
+    <div class="carousel-indicators" id="{{ $carouselId }}-indicators"></div>
+</div>
+
+<!-- Carousel Styles -->
+<style>
+    .carousel-container {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .carousel-track {
+        display: flex;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: transform;
+    }
+
+    .carousel-slide {
+        flex: 0 0 auto;
+        width: 100%;
+        padding: 0 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .carousel-slide {
+            width: 50%;
+        }
+    }
+
+    .success-card,
+    .trial-result-card,
+    .default-card {
+        background: transparent;
+        border-radius: 0;
+        padding: 2.5rem;
+        height: 100%;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        min-height: 280px;
+        border: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .success-card {
+        min-height: 280px;
+    }
+
+    .trial-result-card {
+        min-height: 300px;
+        flex-direction: column;
+        text-align: left;
+        gap: 1rem;
+    }
+
+    .success-card:hover,
+    .trial-result-card:hover,
+    .default-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-container {
+        flex: 0 0 70px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .content-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding-left: 1.5rem;
+    }
+
+    .company-logo {
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+    }
+
+    .quote-text {
+        flex-grow: 1;
+        font-style: normal;
+        color: #333;
+        margin-bottom: 0.5rem;
+        line-height: 1.5;
+        font-size: 0.85rem;
+        font-weight: 300;
+    }
+
+    .company-name {
+        color: var(--primary);
+        font-weight: 300;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+    }
+
+    .attribution {
+        color: #333;
+        font-size: 0.9rem;
+        margin-top: auto;
+        font-weight: 400;
+    }
+
+    .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        padding: 0.75rem;
+        cursor: pointer;
+        font-size: 1.2rem;
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        transition: all 0.3s ease;
+        user-select: none;
+    }
+
+    .carousel-btn:hover {
+        background: rgba(0, 0, 0, 0.9);
+        transform: translateY(-50%) scale(1.05);
+    }
+
+    .carousel-btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        transform: translateY(-50%);
+    }
+
+    .carousel-prev {
+        left: 0;
+    }
+
+    .carousel-next {
+        right: 0;
+    }
+
+    .carousel-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .carousel-indicator {
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.3);
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .carousel-indicator.active {
+        background: var(--primary);
+        transform: scale(1.2);
+    }
+
+    .employers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .employer-logo-item {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .employer-logo {
+        width: 100%;
+        height: 3rem;
+        object-fit: contain;
+        max-width: 150px;
+    }
+
+    @media (max-width: 767px) {
+        .carousel-btn {
+            display: none;
+        }
+
+        .carousel-container {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel-track {
+            transition: none;
+        }
+
+        .carousel-slide {
+            scroll-snap-align: start;
+            width: 100%;
+        }
+
+        .success-card {
+            flex-direction: column;
+            text-align: center;
+            min-height: 320px;
+            gap: 1rem;
+            padding: 1.5rem;
+        }
+
+        .logo-container {
+            flex: 0 0 auto;
+            align-self: center;
+        }
+
+        .content-container {
+            padding-left: 0;
+        }
+
+        .company-logo {
+            width: 60px;
+            height: 60px;
+        }
+
+        .trial-result-card {
+            min-height: 280px;
+        }
+
+        .employers-grid {
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .carousel-track,
+        .carousel-btn,
+        .success-card,
+        .trial-result-card,
+        .default-card {
+            transition: none;
+        }
+    }
+
+    .carousel-btn:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+    }
+
+    .carousel-indicator:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+    }
+</style>
+
+<!-- Carousel JavaScript -->
+<script>
+    class ImprovedCarousel {
+        constructor(containerSelector) {
+            this.container = document.querySelector(containerSelector);
+            if (!this.container) return;
+
+            this.track = this.container.querySelector('.carousel-track');
+            this.slides = this.track.querySelectorAll('.carousel-slide');
+            this.prevBtn = this.container.querySelector('.carousel-prev');
+            this.nextBtn = this.container.querySelector('.carousel-next');
+            this.indicatorsContainer = this.container.parentElement.querySelector('.carousel-indicators');
+
+            this.currentIndex = 0;
+            this.slidesPerView = this.getSlidesPerView();
+            this.totalSlides = this.slides.length;
+
+            this.init();
+        }
+
+        init() {
+            this.createIndicators();
+            this.updateCarousel();
+            this.bindEvents();
+            this.handleResize();
+        }
+
+        getSlidesPerView() {
+            return window.innerWidth >= 768 ? 2 : 1;
+        }
+
+        createIndicators() {
+            if (!this.indicatorsContainer) return;
+
+            const totalPages = Math.ceil(this.totalSlides / this.slidesPerView);
+            this.indicatorsContainer.innerHTML = '';
+
+            for (let i = 0; i < totalPages; i++) {
+                const indicator = document.createElement('button');
+                indicator.classList.add('carousel-indicator');
+                indicator.setAttribute('aria-label', `Go to slide group ${i + 1}`);
+                indicator.addEventListener('click', () => this.goToSlide(i * this.slidesPerView));
+                this.indicatorsContainer.appendChild(indicator);
+            }
+        }
+
+        updateCarousel() {
+            const slideWidth = 100 / this.slidesPerView;
+            const translateX = -(this.currentIndex * slideWidth);
+
+            this.track.style.transform = `translateX(${translateX}%)`;
+
+            // For infinite loop, never disable buttons
+            if (this.prevBtn) this.prevBtn.disabled = false;
+            if (this.nextBtn) this.nextBtn.disabled = false;
+
+            this.updateIndicators();
+        }
+
+        updateIndicators() {
+            if (!this.indicatorsContainer) return;
+
+            const indicators = this.indicatorsContainer.querySelectorAll('.carousel-indicator');
+            const activeIndex = Math.floor(this.currentIndex / this.slidesPerView);
+
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === activeIndex);
+            });
+        }
+
+        goToSlide(index) {
+            this.currentIndex = Math.max(0, Math.min(index, this.totalSlides - this.slidesPerView));
+            this.updateCarousel();
+        }
+
+        nextSlide() {
+            this.currentIndex += this.slidesPerView;
+            if (this.currentIndex >= this.totalSlides) {
+                this.currentIndex = 0; // Loop back to start
+            }
+            this.updateCarousel();
+        }
+
+        prevSlide() {
+            this.currentIndex -= this.slidesPerView;
+            if (this.currentIndex < 0) {
+                this.currentIndex = Math.max(0, this.totalSlides - this.slidesPerView); // Loop to end
+            }
+            this.updateCarousel();
+        }
+
+        bindEvents() {
+            if (this.prevBtn) this.prevBtn.addEventListener('click', () => this.prevSlide());
+            if (this.nextBtn) this.nextBtn.addEventListener('click', () => this.nextSlide());
+
+            this.container.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') this.prevSlide();
+                if (e.key === 'ArrowRight') this.nextSlide();
+            });
+
+            this.addTouchSupport();
+        }
+
+        addTouchSupport() {
+            let startX = 0;
+            let isDragging = false;
+
+            this.track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+
+            this.track.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+            }, { passive: false });
+
+            this.track.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }
+            }, { passive: true });
+        }
+
+        handleResize() {
+            window.addEventListener('resize', () => {
+                const newSlidesPerView = this.getSlidesPerView();
+                if (newSlidesPerView !== this.slidesPerView) {
+                    this.slidesPerView = newSlidesPerView;
+                    this.currentIndex = 0;
+                    this.createIndicators();
+                    this.updateCarousel();
+                }
+            });
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const carouselContainers = document.querySelectorAll('.carousel-container');
+        carouselContainers.forEach(container => {
+            new ImprovedCarousel(`#${container.id}`);
+        });
+    });
+</script>
+
+{{ end }}
