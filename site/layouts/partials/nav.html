@@ -117,8 +117,22 @@
 		.nav-more-mobile { display: inline; }
 	}
 
-	/* Dropdown positioning */
-	.dropdown-container { position: relative; }
+	/* Dropdown positioning and interaction fixes */
+	.dropdown-container {
+		position: relative;
+	}
+
+	/* Create a larger hover area that includes the gap */
+	.dropdown-container::after {
+		content: '';
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		height: 4px; /* Bridge the gap */
+		background: transparent;
+		z-index: 998;
+	}
 
 	.dropdown-menu {
 		min-width: 200px;
@@ -126,15 +140,42 @@
 		right: 0;
 		left: auto;
 		z-index: 999;
-		margin-top: .25rem;
+		margin-top: 0; /* Remove gap */
 		border-radius: .25rem;
 		overflow: hidden;
+		/* Add a small delay before hiding */
+		transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out;
+		opacity: 0;
+		visibility: hidden;
 	}
 
-	/* Dropdown interaction */
+	/* Show dropdown on hover with improved targeting */
 	.dropdown-container:hover .dropdown-menu,
-	.dropdown-container:focus-within .dropdown-menu {
+	.dropdown-container:focus-within .dropdown-menu,
+	.dropdown-menu:hover {
 		display: block !important;
+		opacity: 1;
+		visibility: visible;
+	}
+
+	/* Ensure dropdown stays visible when hovering over the pseudo-element gap */
+	.dropdown-container:hover::after {
+		display: block;
+	}
+
+	/* Alternative approach: extend the clickable area */
+	.dropdown-toggle {
+		position: relative;
+	}
+
+	.dropdown-toggle::after {
+		content: '';
+		position: absolute;
+		top: 100%;
+		left: -10px;
+		right: -10px;
+		height: 4px;
+		background: transparent;
 	}
 
 	/* Touch-friendly for mobile */
@@ -145,6 +186,11 @@
 
 		.dropdown-menu a {
 			padding: .75rem 1rem;
+		}
+
+		/* Remove transitions on mobile for immediate response */
+		.dropdown-menu {
+			transition: none;
 		}
 	}
 
