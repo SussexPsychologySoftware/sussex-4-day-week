@@ -12,7 +12,6 @@ import HowItWorksPreview from "./cms-preview-templates/how-it-works";
 import ResourcesPreview from "./cms-preview-templates/resources";
 import SignupPreview from "./cms-preview-templates/signup";
 import SuccessStoriesPreview from "./cms-preview-templates/success-stories";
-import ResourcesPreview from "./cms-preview-templates/resources";
 import TeamPreview from "./cms-preview-templates/team";
 
 CMS.registerPreviewStyle(styles, {raw: true});
