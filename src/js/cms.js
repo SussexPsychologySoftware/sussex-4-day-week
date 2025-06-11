@@ -5,7 +5,7 @@ import CMS from "decap-cms-app";
 import styles from "!to-string-loader!css-loader!postcss-loader!sass-loader!../css/main.scss";
 
 import ContactPreview from "./cms-preview-templates/contact";
-import ControlEmployerPreview from "./previews/control-employer";
+import ControlEmployerPreview from "./cms-preview-templates/control-employer";
 import FooterPreview from "./cms-preview-templates/footer";
 import HomePreview from "./cms-preview-templates/home";
 import HowItWorksPreview from "./cms-preview-templates/how-it-works";
