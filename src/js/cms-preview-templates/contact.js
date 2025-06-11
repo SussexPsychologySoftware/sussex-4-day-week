@@ -1,30 +1,44 @@
-import React from "react";
+import React from 'react';
 
-const ContactEntry = ({heading, text}) =>
-  <div>
-    <h4 className="f4 b lh-title mb2 primary">{ heading }</h4>
-    <p>{ text }</p>
-  </div>;
+const ContactPreview = ({ entry, widgetFor }) => {
+  const data = entry.getIn(['data']).toJS();
 
-const ContactEntries = ({data}) =>
-  (data && data.length > 0
-    ? <div className="flex-ns mb3">
-      {// eslint-disable-next-line react/jsx-key
-        data.map(({heading, text}) => <ContactEntry heading={heading} text={text} />)}
-    </div>
-    : "");
-
-export default class ContactPreview extends React.Component {
-  render() {
-    const {entry, getAsset, widgetFor} = this.props;
-    const entryContactEntries = entry.getIn(["data", "contact_entries"]);
-    const contactEntries = entryContactEntries ? entryContactEntries.toJS() : [];
-    return <div className="ph3 bg-off-white">
-      <img src={getAsset(entry.getIn(["data", "logo"]))} alt="" className="db w4 center pv4" />
-      <div className="center mw6 pv3">
-        { widgetFor("body") }
-        <ContactEntries data={contactEntries} />
+  return (
+    <div className="ph3 bg-off-white min-vh-100 center mw7 pv4">
+      {/* Page Header */}
+      <div className="tc pb4">
+        <h1 className="f4 f3-l fw3 lh-title mb3 primary ttu">
+          {data.title || 'Get in Touch!'}
+        </h1>
       </div>
-    </div>;
-  }
-}
+
+      {/* Contact Information */}
+      {(data.email || data.instructions) && (
+        <div className="tc center mb4">
+          {data.email && (
+            <p className="f6 fw3 mb3 center">
+              Email: <a href={`mailto:${data.email}`} className="link primary">{data.email}</a>
+            </p>
+          )}
+          {data.instructions && (
+            <p className="f6 fw3 lh-copy measure center">{data.instructions}</p>
+          )}
+        </div>
+      )}
+
+      {/* Page Content */}
+      {widgetFor('body') && (
+        <div className="lh-copy measure center mb4 f6 fw3">
+          {widgetFor('body')}
+        </div>
+      )}
+
+      {/* Contact Form Placeholder */}
+      <div className="tc">
+        <p className="f6 fw3">[Contact Form Placeholder]</p>
+      </div>
+    </div>
+  );
+};
+
+export default ContactPreview;

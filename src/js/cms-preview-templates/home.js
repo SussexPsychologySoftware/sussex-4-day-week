@@ -1,63 +1,80 @@
 import React from "react";
 
-import Jumbotron from "./components/jumbotron";
+const HomePreview = ({ entry, getAsset }) => {
+  const data = entry.getIn(["data"]).toJS();
 
-export default class HomePreview extends React.Component {
-  render() {
-    const {entry, getAsset} = this.props;
-    const image = getAsset(entry.getIn(["data", "image"]));
-
-    return <div>
-      <Jumbotron image={image} title={entry.getIn(["data", "title"])} subtitle={entry.getIn(["data", "subtitle"])}/>
-
-      <div className="bg-grey-1 pv4">
-        <div className="flex-l mhn1-l ph3 center mw7">
-          <h2 className="f2 b lh-title mb2 w-40-l">{entry.getIn(["data", "blurb", "heading"])}</h2>
-          <p className="w-60-l mb0">{entry.getIn(["data", "blurb", "text"])}</p>
-        </div>
-      </div>
-
-      <div className="bg-off-white pv4">
-        <div className="ph3 mw7 center">
-          <h2 className="f2 b lh-title mb2">{entry.getIn(["data", "intro", "heading"])}</h2>
-          <p className="mb4 mw6">{entry.getIn(["data", "intro", "text"])}</p>
-
-          <div className="flex-ns mhn2-ns mb3">
-            {(entry.getIn(["data", "products"]) || []).map((product, i) => <div className="ph2-ns w-50-ns" key={i}>
-              <img src={getAsset(product.get("image"))} alt="" className="center db mb3" style={{width: "240px"}}/>
-              <p>{product.get("text")}</p>
-            </div>)}
-          </div>
-
-          <div className="tc">
-            <a href="#" className="btn raise">See all products</a>
+  return (
+    <div>
+      {/* Hero Section */}
+      {data.hero && (
+        <div className="hero pt3 pt4-l ph3">
+          <div className="mw9 center ph3 tc">
+            <h1 className="f4 f3-l fw3 lh-title mb3 primary ttu">
+              {data.hero.slogan || "Your Slogan Here"}
+            </h1>
+            <p className="f6 fw3 mw7 center">
+              {data.hero.description || "Your description here."}
+            </p>
           </div>
         </div>
-      </div>
+      )}
 
-      <div className="bg-grey-1 pv4">
-        <div className="ph3 mw7 center">
+      {/* Feature Blocks Section */}
+      {data.features && (
+        <div className="pb4 pt2 pb5-l pt3-l bg-white">
+          <div className="mw7 center">
+            {data.features.map((feature, index) => (
+              <div
+                key={index}
+                className={`feature-block pt3 pb4-l ph3 ph0-l ${
+                  index % 2 === 1 ? "reverse-desktop" : ""
+                }`}
+              >
+                {/* Media Container */}
+                <div className="feature-media mb3 mb0-l">
+                  {feature.image ? (
+                    <img
+                      src={getAsset(feature.image)}
+                      alt={feature.title || "Feature Image"}
+                      className="w-100 db feature-img"
+                    />
+                  ) : feature.youtube_embed_src ? (
+                    <div className="video-container">
+                      <iframe
+                        src={feature.youtube_embed_src}
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                  ) : null}
+                </div>
 
-          <div className="flex-l mhn2-l">
-            <div className="w-40-l ph2-l">
-              <h2 className="f2 b lh-title mb2">{entry.getIn(["data", "values", "heading"])}</h2>
-
-              <p>{entry.getIn(["data", "values", "text"])}</p>
-            </div>
-
-            <div className="w-60-l ph2-l">
-              <img src="/img/home-about-section.jpg" alt="" className="mb3"/>
-            </div>
+                {/* Content Container */}
+                <div className="feature-content">
+                  <h3 className="f4 b lh-title mb2 primary ttu fw3">
+                    {feature.title || "Feature Title"}
+                  </h3>
+                  <p className="f6 lh-copy fw3">
+                    {feature.description || "Feature description here."}
+                  </p>
+                  {feature.link_url && (
+                    <a
+                      href={feature.link_url}
+                      className="btn bg-primary white f6 link br1 ph3 pv2 mb3 dib"
+                    >
+                      {feature.link_text || "Learn More"}
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
-
-          <div className="tc">
-            <a href="{{.buttonLink}}" className="btn raise">Read more</a>
-          </div>
-
         </div>
-      </div>
+      )}
+    </div>
+  );
+};
 
-
-    </div>;
-  }
-}
+export default HomePreview;
