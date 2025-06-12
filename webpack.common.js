@@ -13,7 +13,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, "dist"),
-    publicPath: ""
+    publicPath: "/",
   },
 
   module: {
@@ -69,7 +69,7 @@ module.exports = {
         to: "fonts/",
       }]
     }),
-    new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({ // NOTE this generates admin/index.html for the CMS from src/cms.html template
       filename: "admin/index.html",
       template: 'src/cms.html',
       inject: true,
