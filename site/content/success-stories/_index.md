@@ -71,6 +71,14 @@ success_stories:
       focused. The trial was a good transition to making it happen - not sure it
       would have happened yet without us working with you.
     attribution: Social Firefly
+  - logo: img/successlocal.png
+    company: SUCCESS LOCAL
+    quote: Without the support of the University I very much doubt that we'd have
+      embarked on the 4 day week trial. It definitely gave us the confidence to
+      run a trial, and it's been great to receive a report at the end of the
+      trial to see the impact the trial has had, without it being based entirely
+      on feel.
+    attribution: Success Local
 trial_results:
   heading: TRIAL RESULTS
   logos:
