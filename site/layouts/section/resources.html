@@ -21,7 +21,7 @@
         </div>
         {{ end }}
 
-        <!-- PDF Guide Section -->
+        <!-- Main PDF Guide Section -->
         {{ if .Params.pdf_guide }}
         <div class="pv3 tc">
             <div class="bg-white pa4 br2 mw6 center ba b--light-gray">
@@ -40,9 +40,38 @@
         {{ end }}
         {{ end }}
 
+        <!-- Additional Downloads Section -->
+        {{ if .Params.additional_downloads }}
+        <div class="pv3">
+            <h2 class="f4 fw3 lh-title mb4 primary ttu tc">Additional Resources</h2>
+            <div class="cf">
+                {{ range .Params.additional_downloads }}
+                <div class="fl w-100 w-50-l pa3">
+                    <div class="bg-white pa4 br2 h-100 ba b--light-gray">
+                        <!-- Category Badge -->
+                        <div class="mb3">
+                            <span class="f7 fw4 ttu tracked bg-light-gray ph2 pv1 br1">{{ .category | default "Guide" }}</span>
+                        </div>
+
+                        <h3 class="f5 fw3 lh-title mb3 primary">{{ .title }}</h3>
+                        <p class="f6 fw3 lh-copy mb4">{{ .description }}</p>
+
+                        <div class="tc">
+                            <a href="{{ .file }}" class="btn bg-primary white f6 link br1 ph3 pv2 dib" download>
+                                {{ .button_text | default "DOWNLOAD" }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
         <!-- Partners Section -->
         {{ if .Params.partners }}
         <div class="pv3">
+            <h2 class="f4 fw3 lh-title mb4 primary ttu tc">Our Partners</h2>
             <div class="cf">
                 {{ range .Params.partners }}
                 <div class="fl w-100 w-50-l pa3 tc">

@@ -157,32 +157,48 @@ collections:
               - {label: "Success Message", name: "success_message", widget: "text", default: "Thank you for your message! We'll get back to you within 2 business days."}
               - {label: "Submit Button Text", name: "submit_text", widget: "string", default: "Send Message"}
 
-      # Resources
-      - file: "site/content/resources/_index.md"
-        label: "Resources"
-        name: "resources"
+      - name: "resources"
+        label: "Resources Page"
+        file: "content/_index.md"
         fields:
-          - {label: "Title", name: "title", widget: "string", default: "Resources"}
-          - {label: "Hero Image", name: "hero_image", widget: "image", required: false}
-          - label: "PDF Guide"
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Hero Image", name: "hero_image", widget: "image" }
+          - { label: "Content", name: "body", widget: "markdown", required: false }
+
+          # Main PDF Guide Section
+          - label: "Main PDF Guide"
             name: "pdf_guide"
             widget: "object"
             fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Description", name: "description", widget: "text"}
-              - {label: "PDF File", name: "file", widget: "file", allow_multiple: false, media_folder: "/site/static/files", public_folder: "/files"}
-              - {label: "Download Button Text", name: "button_text", widget: "string", default: "DOWNLOAD YOUR FREE GUIDE"}
-              - {label: "Bottom Text", name: "bottom_text", widget: "text", required: false}
-          - label: "Partner Organizations"
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "PDF File", name: "file", widget: "file" }
+              - { label: "Button Text", name: "button_text", widget: "string" }
+              - { label: "Bottom Text", name: "bottom_text", widget: "text", required: false }
+
+          # Additional Downloads Section
+          - label: "Additional Downloads"
+            name: "additional_downloads"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "File", name: "file", widget: "file" }
+              - { label: "Button Text", name: "button_text", widget: "string", default: "DOWNLOAD" }
+              - { label: "Category", name: "category", widget: "select", options: ["Guide", "Template", "Checklist", "Report", "Other"], default: "Guide" }
+
+          # Partners Section
+          - label: "Partners"
             name: "partners"
             widget: "list"
             fields:
-              - {label: "Name", name: "name", widget: "string"}
-              - {label: "Logo", name: "logo", widget: "image"}
-              - {label: "Description Text", name: "text", widget: "string", required: false}
-              - {label: "Website", name: "website", widget: "string", required: false}
-              - {label: "Redirect Text", name: "redirect_text", widget: "string", required: false}
-              - {label: "Extra Link", name: "extra_link", widget: "string", required: false}
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image" }
+              - { label: "Description Text", name: "text", widget: "text" }
+              - { label: "Website URL", name: "website", widget: "string" }
+              - { label: "Redirect Text", name: "redirect_text", widget: "string", required: false }
+              - { label: "Extra Link", name: "extra_link", widget: "string", required: false }
 
       # Sign-up Page
       - file: "site/content/signup/_index.md"
