@@ -1,6 +1,6 @@
 import React from "react";
 
-const HomePreview = ({ entry, getAsset }) => {
+const HomePreview = ({entry, getAsset}) => {
   const data = entry.getIn(["data"]).toJS();
 
   return (

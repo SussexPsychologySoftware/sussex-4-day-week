@@ -1,6 +1,6 @@
 import React from "react";
 
-const FooterPreview = ({ entry }) => {
+const FooterPreview = ({entry}) => {
   const data = entry.getIn(["data"]).toJS();
 
   return (

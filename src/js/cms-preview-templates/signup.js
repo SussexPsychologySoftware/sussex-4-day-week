@@ -1,6 +1,6 @@
 import React from "react";
 
-const SignupPreview = ({ entry }) => {
+const SignupPreview = ({entry}) => {
   const data = entry.getIn(["data"]).toJS();
 
   return (
@@ -13,7 +13,7 @@ const SignupPreview = ({ entry }) => {
       </div>
 
       {/* Sign-up Form */}
-      <div className="center" style={{ maxWidth: "500px" }}>
+      <div className="center" style={{maxWidth: "500px"}}>
         <form name="sussex-signup" method="POST" className="form form--custom">
           <fieldset className="fieldset">
             <ul className="form-fields list pa0">

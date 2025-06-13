@@ -1,6 +1,6 @@
 import React from "react";
 
-const ResourcesPreview = ({ entry, getAsset, widgetFor }) => {
+const ResourcesPreview = ({entry, getAsset, widgetFor}) => {
   const data = entry.getIn(["data"]).toJS();
 
   return (
@@ -69,7 +69,7 @@ const ResourcesPreview = ({ entry, getAsset, widgetFor }) => {
                     src={getAsset(partner.logo)}
                     alt={partner.name || "Partner Logo"}
                     className="w-100 h3 db center mb2"
-                    style={{ objectFit: "contain" }}
+                    style={{objectFit: "contain"}}
                   />
                   <p className="f6 fw3">
                     The{" "}

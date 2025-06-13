@@ -1,6 +1,6 @@
 import React from "react";
 
-const HowItWorksPreview = ({ entry, widgetFor }) => {
+const HowItWorksPreview = ({entry, widgetFor}) => {
   const data = entry.getIn(["data"]).toJS();
 
   return (
@@ -32,7 +32,7 @@ const HowItWorksPreview = ({ entry, widgetFor }) => {
                   key={index}
                   className="fl w-100 w-50-m w-25-l pa2"
                 >
-                  <div className="bg-white pa3 br2 tc" style={{ minHeight: "280px" }}>
+                  <div className="bg-white pa3 br2 tc" style={{minHeight: "280px"}}>
                     {/* Icon Circle */}
                     <div className="bg-primary white icon-circle">
                       {index === 0 && <span>📧</span>}

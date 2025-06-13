@@ -1,6 +1,6 @@
 import React from "react";
 
-const TeamPreview = ({ entry, getAsset }) => {
+const TeamPreview = ({entry, getAsset}) => {
   const data = entry.getIn(["data"]).toJS();
 
   return (

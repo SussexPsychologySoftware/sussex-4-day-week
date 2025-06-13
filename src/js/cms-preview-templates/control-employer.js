@@ -1,6 +1,6 @@
 import React from "react";
 
-const ControlEmployerPreview = ({ entry, widgetFor }) => {
+const ControlEmployerPreview = ({entry, widgetFor}) => {
   const data = entry.getIn(["data"]).toJS();
 
   return (
