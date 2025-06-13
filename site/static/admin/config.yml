@@ -159,7 +159,7 @@ collections:
 
       - name: "resources"
         label: "Resources Page"
-        file: "content/_index.md"
+        file: "site/content/content/_index.md"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Hero Image", name: "hero_image", widget: "image" }
