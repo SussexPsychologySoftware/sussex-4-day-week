@@ -23,6 +23,5 @@ CMS.registerPreviewTemplate("how-it-works", HowItWorksPreview);
 CMS.registerPreviewTemplate("resources", ResourcesPreview);
 CMS.registerPreviewTemplate("signup", SignupPreview);
 CMS.registerPreviewTemplate("success-stories", SuccessStoriesPreview);
-CMS.registerPreviewTemplate("resources", ResourcesPreview);
 CMS.registerPreviewTemplate("team", TeamPreview);
 CMS.init();
