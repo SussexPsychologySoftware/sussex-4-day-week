@@ -52,12 +52,12 @@ CMS.registerPreviewTemplate("team", TeamPreview);
 console.log("Registered: team");
 
 // Add event listeners to debug what's happening
-CMS.registerEventListener('entry.save', (data) => {
-    console.log("Entry saved:", data);
+CMS.registerEventListener("entry.save", (data) => {
+  console.log("Entry saved:", data);
 });
 
-CMS.registerEventListener('entry.publish', (data) => {
-    console.log("Entry published:", data);
+CMS.registerEventListener("entry.publish", (data) => {
+  console.log("Entry published:", data);
 });
 
 // Initialize CMS
