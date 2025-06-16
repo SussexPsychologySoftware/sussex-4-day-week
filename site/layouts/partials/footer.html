@@ -1,11 +1,10 @@
-<!-- File: site/layouts/partials/footer.html -->
 <footer class="bg-primary white pv4">
 	<div class="center mw7 pv3 ph3">
 		<!-- Social Icons Section -->
 		{{ if .Site.Data.footer.social }}
 		<div class="tc mb3">
 			{{ range .Site.Data.footer.social }}
-			<a href="{{ .url }}" target="_blank" title="{{ .platform }}" class="white dib mh2 f4">
+			<a href="{{ .url }}" target="_blank" title="{{ .platform }}" class="white dib mh2 f4 dim">
 				{{ if eq .platform "LinkedIn" }}
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w1 h1 fill-white">
 					<path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path>
@@ -28,10 +27,10 @@
 
 			<!-- Newsletter Form -->
 			<div class="tc">
-				<form name="newsletter" method="POST" netlify class="di">
+				<form name="newsletter" method="POST" netlify class="di newsletter-form">
 					<input type="hidden" name="form-name" value="newsletter" />
-					<input type="email" name="email" placeholder="Email Address" autocomplete="email" class="f6 pv2 ph3 mr1 ba br2 b--light-gray bg-white gray w5" required />
-					<button type="submit" class="bg-primary white f6 br2 ph3 pv2 ttu pointer bn">
+					<input type="email" name="email" placeholder="Email Address" autocomplete="email" class="f6 pv2 ph3 mr1-ns mb2 mb0-ns ba br2 b--white bg-transparent white w5-ns w-100" required />
+					<button type="submit" class="bg-white primary f6 br2 ph3 pv2 ttu pointer bn dim">
 						<span>Subscribe</span>
 					</button>
 					<!-- Honeypot field -->
@@ -50,36 +49,19 @@
 </footer>
 
 <style>
-	/* Only essential styles not covered by Tachyons */
-	.newsletter-form input[type="email"]:focus {
-		border-color: #357edd;
-		outline: none;
-	}
-
+	/* Custom styles for newsletter form */
 	.newsletter-form input[type="email"]::placeholder {
-		color: #777;
+		color: var(--primary, #357edd);
+		opacity: 1;
 	}
 
-	.newsletter-form button:hover {
-		opacity: 0.9;
+	.newsletter-form input[type="email"]:focus {
+		outline: none;
+		box-shadow: 0 0 0 2px white;
 	}
 
-	/* Align button with input field */
-	.newsletter-form input,
-	.newsletter-form button {
-		vertical-align: top;
-	}
-
-	/* Mobile responsiveness */
-	@media (max-width: 25rem) {
-		.newsletter-form input {
-			display: block;
-			margin: 0 auto 0.5rem auto;
-		}
-
-		.newsletter-form button {
-			display: block;
-			margin: 0 auto;
-		}
+	/* Ensure primary color is available for button text */
+	.primary {
+		color: var(--primary, #357edd);
 	}
 </style>
