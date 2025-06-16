@@ -1,8 +1,13 @@
 import React from "react";
 
 const TeamPreview = ({entry, getAsset}) => {
-  const data = entry.getIn(["data"]).toJS();
-
+  let data = {};
+  try {
+    data = entry?.getIn ? entry.getIn(["data"]).toJS() : {};
+  } catch (error) {
+    console.error("Error getting entry data:", error);
+    data = {};
+  }
   return (
     <div className="ph3 bg-off-white min-vh-100 center mw7 pv4">
       {/* Page Header */}

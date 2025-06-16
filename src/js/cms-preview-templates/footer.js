@@ -1,8 +1,13 @@
 import React from "react";
 
 const FooterPreview = ({entry}) => {
-  const data = entry.getIn(["data"]).toJS();
-
+  let data = {};
+  try {
+    data = entry?.getIn ? entry.getIn(["data"]).toJS() : {};
+  } catch (error) {
+    console.error("Error getting entry data:", error);
+    data = {};
+  }
   return (
     <footer className="bg-primary white pv4">
       <div className="center mw7 pv3 ph3">
