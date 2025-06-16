@@ -96,7 +96,10 @@ collections:
             name: "process_steps"
             widget: "list"
             fields:
-              - {label: "Icon/Logo", name: "icon", widget: "image"}
+              - label: "Icon SVG"
+                name: "icon"
+                widget: "text"
+                hint: "Paste SVG code here. The SVG will automatically be sized to fit the circle."
               - {label: "Title", name: "title", widget: "string"}
               - {label: "Description", name: "description", widget: "text"}
               - {label: "Email", name: "email", widget: "string", required: false, hint: "Optional email for this step"}
@@ -108,7 +111,6 @@ collections:
               - {label: "Description", name: "description", widget: "text", required: false}
               - {label: "Button Text", name: "button_text", widget: "string", default: "REGISTER HERE"}
               - {label: "Form URL", name: "form_url", widget: "string", hint: "Link to sign-up form or page"}
-
       # Control Employer
       - file: "site/content/control-employer/_index.md"
         label: "Be a Control Employer"

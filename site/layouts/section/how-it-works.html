@@ -7,6 +7,13 @@
         overflow-wrap: break-word;
         hyphens: auto;
     }
+
+    /* Style SVGs inside icon circles */
+    .icon-circle svg {
+        width: 2rem;
+        height: 2rem;
+        fill: currentColor;
+    }
 </style>
 
 <div class="ph3 bg-off-white min-vh-100">
@@ -32,8 +39,8 @@
                 <div class="fl w-100 w-50-m w-25-l pa2">
                     <div class="bg-white pa3 br2 tc" style="min-height: 280px;">
                         <!-- Icon Circle -->
-                        <div class="w3 h3 br-100 bg-primary white flex items-center justify-center center mb3">
-                            <img src="{{ .icon }}" alt="{{ .title }} icon" class="w2 h2">
+                        <div class="w3 h3 br-100 bg-primary white flex items-center justify-center center mb3 icon-circle">
+                            {{ .icon | safeHTML }}
                         </div>
 
                         <!-- Content -->
@@ -68,5 +75,6 @@
         {{ end }}
     </div>
 </div>
+
 
 {{ end }}
