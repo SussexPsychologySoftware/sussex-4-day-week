@@ -14,57 +14,29 @@
         </div>
         {{ end }}
 
-        <!-- Page Content -->
-        {{ if .Content }}
-        <div class="lh-copy measure center mb4 f6 fw3">
-            {{ .Content }}
-        </div>
-        {{ end }}
-
-        <!-- Main PDF Guide Section -->
-        {{ if .Params.pdf_guide }}
-        <div class="pv3 tc">
-            <div class="bg-white pa4 br2 mw6 center ba b--light-gray">
-                <h2 class="f4 fw3 lh-title mb3 primary ttu">{{ .Params.pdf_guide.title }}</h2>
-                <p class="f6 fw3 lh-copy mb4">{{ .Params.pdf_guide.description }}</p>
-                <a href="{{ .Params.pdf_guide.file }}" class="btn bg-primary white f6 link br1 ph3 pv2 mb3 dib" download>
-                    {{ .Params.pdf_guide.button_text }}
-                </a>
-            </div>
-        </div>
-
-        {{ if .Params.pdf_guide.bottom_text }}
-        <div class="tc mb4">
-            <p class="f6 fw3 lh-copy measure center">{{ .Params.pdf_guide.bottom_text }}</p>
-        </div>
-        {{ end }}
-        {{ end }}
-
-        <!-- Additional Downloads Section -->
-        {{ if .Params.additional_downloads }}
+        <!-- Downloads Section -->
+        {{ if .Params.downloads }}
         <div class="pv3">
-            <h2 class="f4 fw3 lh-title mb4 primary ttu tc">Additional Resources</h2>
             <div class="cf">
-                {{ range .Params.additional_downloads }}
+                {{ range .Params.downloads }}
                 <div class="fl w-100 w-50-l pa3">
-                    <div class="bg-white pa4 br2 h-100 ba b--light-gray">
-                        <!-- Category Badge -->
-                        <div class="mb3">
-                            <span class="f7 fw4 ttu tracked bg-light-gray ph2 pv1 br1">{{ .category | default "Guide" }}</span>
-                        </div>
-
-                        <h3 class="f5 fw3 lh-title mb3 primary">{{ .title }}</h3>
+                    <div class="bg-white pa4 br2 h-100 ba b--light-gray tc">
+                        <h2 class="f4 fw3 lh-title mb3 primary ttu">{{ .title }}</h2>
                         <p class="f6 fw3 lh-copy mb4">{{ .description }}</p>
-
-                        <div class="tc">
-                            <a href="{{ .file }}" class="btn bg-primary white f6 link br1 ph3 pv2 dib" download>
-                                {{ .button_text | default "DOWNLOAD" }}
-                            </a>
-                        </div>
+                        <a href="{{ .file }}" class="btn bg-primary white f6 link br1 ph3 pv2 dib" download>
+                            {{ .button_text }}
+                        </a>
                     </div>
                 </div>
                 {{ end }}
             </div>
+        </div>
+        {{ end }}
+
+        <!-- Bottom Text -->
+        {{ if .Params.bottom_text }}
+        <div class="tc mb4">
+            <p class="f6 fw3 lh-copy measure center">{{ .Params.bottom_text }}</p>
         </div>
         {{ end }}
 

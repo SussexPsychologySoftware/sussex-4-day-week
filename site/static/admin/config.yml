@@ -111,6 +111,7 @@ collections:
               - {label: "Description", name: "description", widget: "text", required: false}
               - {label: "Button Text", name: "button_text", widget: "string", default: "REGISTER HERE"}
               - {label: "Form URL", name: "form_url", widget: "string", hint: "Link to sign-up form or page"}
+
       # Control Employer
       - file: "site/content/control-employer/_index.md"
         label: "Be a Control Employer"
@@ -165,30 +166,17 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Hero Image", name: "hero_image", widget: "image" }
-          - { label: "Content", name: "body", widget: "markdown", required: false }
+          - { label: "Bottom Text", name: "bottom_text", widget: "text", required: false, hint: "Text that appears below the downloads section" }
 
-          # Main PDF Guide Section
-          - label: "Main PDF Guide"
-            name: "pdf_guide"
-            widget: "object"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "PDF File", name: "file", widget: "file" }
-              - { label: "Button Text", name: "button_text", widget: "string" }
-              - { label: "Bottom Text", name: "bottom_text", widget: "text", required: false }
-
-          # Additional Downloads Section
-          - label: "Additional Downloads"
-            name: "additional_downloads"
+          # Single Downloads Section
+          - label: "Downloads"
+            name: "downloads"
             widget: "list"
-            required: false
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "File", name: "file", widget: "file" }
               - { label: "Button Text", name: "button_text", widget: "string", default: "DOWNLOAD" }
-              - { label: "Category", name: "category", widget: "select", options: ["Guide", "Template", "Checklist", "Report", "Other"], default: "Guide" }
 
           # Partners Section
           - label: "Partners"
@@ -201,7 +189,7 @@ collections:
               - { label: "Website URL", name: "website", widget: "string" }
               - { label: "Redirect Text", name: "redirect_text", widget: "string", required: false }
               - { label: "Extra Link", name: "extra_link", widget: "string", required: false }
-
+                
       # Sign-up Page
       - file: "site/content/signup/_index.md"
         label: "Sign-up Page"
