@@ -14,10 +14,6 @@ downloads:
       started with a trial of the 4 day week!
     file: /img/Sussex_4DW_Guide.pdf
     button_text: DOWNLOAD YOUR FREE GUIDE
-  - button_text: DOWNLOAD NOW
-    title: download thing 2
-    description: abcdefajdfnasndffsa asdfsn a
-    file: img/Sussex_4DW_Guide.pdf
 partners:
   - name: 4 Day Week Global Foundation
     logo: /img/4dayweekglobal.png
