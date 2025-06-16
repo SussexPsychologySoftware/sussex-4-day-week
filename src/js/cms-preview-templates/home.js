@@ -1,7 +1,14 @@
 import React from "react";
 
 const HomePreview = ({entry, getAsset}) => {
-  const data = entry.getIn(["data"]).toJS();
+  // Safe data extraction - same pattern as SuccessStoriesPreview
+  let data = {};
+  try {
+    data = entry?.getIn ? entry.getIn(["data"]).toJS() : {};
+  } catch (error) {
+    console.error("Error getting entry data:", error);
+    data = {};
+  }
 
   return (
     <div>
@@ -20,7 +27,7 @@ const HomePreview = ({entry, getAsset}) => {
       )}
 
       {/* Feature Blocks Section */}
-      {data.features && (
+      {data.features && Array.isArray(data.features) && (
         <div className="pb4 pt2 pb5-l pt3-l bg-white">
           <div className="mw7 center">
             {data.features.map((feature, index) => (
@@ -32,13 +39,13 @@ const HomePreview = ({entry, getAsset}) => {
               >
                 {/* Media Container */}
                 <div className="feature-media mb3 mb0-l">
-                  {feature.image ? (
+                  {feature?.image ? (
                     <img
-                      src={getAsset(feature.image)}
+                      src={getAsset ? getAsset(feature.image) : feature.image}
                       alt={feature.title || "Feature Image"}
                       className="w-100 db feature-img"
                     />
-                  ) : feature.youtube_embed_src ? (
+                  ) : feature?.youtube_embed_src ? (
                     <div className="video-container">
                       <iframe
                         src={feature.youtube_embed_src}
@@ -54,12 +61,12 @@ const HomePreview = ({entry, getAsset}) => {
                 {/* Content Container */}
                 <div className="feature-content">
                   <h3 className="f4 b lh-title mb2 primary ttu fw3">
-                    {feature.title || "Feature Title"}
+                    {feature?.title || "Feature Title"}
                   </h3>
                   <p className="f6 lh-copy fw3">
-                    {feature.description || "Feature description here."}
+                    {feature?.description || "Feature description here."}
                   </p>
-                  {feature.link_url && (
+                  {feature?.link_url && (
                     <a
                       href={feature.link_url}
                       className="btn bg-primary white f6 link br1 ph3 pv2 mb3 dib"

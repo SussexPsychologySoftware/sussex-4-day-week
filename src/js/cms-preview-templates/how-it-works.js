@@ -1,7 +1,29 @@
 import React from "react";
 
 const HowItWorksPreview = ({entry, widgetFor}) => {
-  const data = entry.getIn(["data"]).toJS();
+  // Guard clause - return early if entry is not available
+  if (!entry || !entry.getIn) {
+    return (
+      <div className="ph3 bg-off-white min-vh-100">
+        <div className="center mw8 pv4">
+          <div className="tc">
+            <h1 className="f4 f3-l fw3 lh-title mb3 primary ttu">
+                Loading How It Works Preview...
+            </h1>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Safely get data with fallback
+  let data = {};
+  try {
+    data = entry.getIn(["data"]) ? entry.getIn(["data"]).toJS() : {};
+  } catch (error) {
+    console.error("Error getting entry data:", error);
+    data = {};
+  }
 
   return (
     <div className="ph3 bg-off-white min-vh-100">
@@ -17,14 +39,14 @@ const HowItWorksPreview = ({entry, widgetFor}) => {
         </div>
 
         {/* Page Content */}
-        {widgetFor("body") && (
+        {widgetFor && widgetFor("body") && (
           <div className="lh-copy measure center mb4 f6 fw3">
             {widgetFor("body")}
           </div>
         )}
 
         {/* Process Steps */}
-        {data.process_steps && (
+        {data.process_steps && Array.isArray(data.process_steps) && (
           <div className="pv3">
             <div className="cf">
               {data.process_steps.map((step, index) => (
@@ -43,11 +65,11 @@ const HowItWorksPreview = ({entry, widgetFor}) => {
 
                     {/* Content */}
                     <h3 className="f5 fw3 lh-title mb3 primary ttu">
-                      {step.title || "Step Title"}
+                      {step?.title || "Step Title"}
                     </h3>
                     <p className="f6 fw3 lh-copy gray">
-                      {step.description || "Step description here."}
-                      {step.email && (
+                      {step?.description || "Step description here."}
+                      {step?.email && (
                         <>
                           <br />
                           <a
@@ -71,20 +93,30 @@ const HowItWorksPreview = ({entry, widgetFor}) => {
           <div className="pv4 bg-primary white tc br2 mw7 center">
             <div className="flex flex-column items-center">
               <h2 className="f3 fw3 lh-title mb3 ttu">
-                {data.registration.heading || "Register Now"}
+                {data.registration?.heading || "Register Now"}
               </h2>
-              {data.registration.description && (
+              {data.registration?.description && (
                 <span className="f5 fw3 mb4 mw6">
                   {data.registration.description}
                 </span>
               )}
               <a
-                href={data.registration.form_url || "#"}
+                href={data.registration?.form_url || "#"}
                 className="btn bg-white primary f6 link br1 ph3 pv2 mb3 dib"
               >
-                {data.registration.button_text || "Sign Up"}
+                {data.registration?.button_text || "Sign Up"}
               </a>
             </div>
+          </div>
+        )}
+
+        {/* Debug info (remove in production) */}
+        {process.env.NODE_ENV === "development" && (
+          <div className="pa3 bg-light-gray mt4">
+            <h4>Debug Info:</h4>
+            <pre style={{fontSize: "12px", overflow: "auto"}}>
+              {JSON.stringify(data, null, 2)}
+            </pre>
           </div>
         )}
       </div>
