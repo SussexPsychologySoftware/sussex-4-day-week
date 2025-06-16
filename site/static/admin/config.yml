@@ -99,7 +99,7 @@ collections:
               - label: "Icon SVG"
                 name: "icon"
                 widget: "text"
-                hint: "Paste SVG code here. The SVG will automatically be sized to fit the circle."
+                hint: "Paste SVG code here. The SVG will automatically be sized to fit the circle. Copy from https://lucide.dev/icons/."
               - {label: "Title", name: "title", widget: "string"}
               - {label: "Description", name: "description", widget: "text"}
               - {label: "Email", name: "email", widget: "string", required: false, hint: "Optional email for this step"}
