@@ -20,12 +20,12 @@
         <!-- Benefits Section -->
         {{ if .Params.benefits }}
         <div class="pv3">
-            <div class="cf">
+            <div class="flex flex-wrap justify-center items-stretch nl2 nr2">
                 {{ range .Params.benefits }}
-                <div class="fl w-100 w-50-m w-third-l pa2">
-                    <div class="pa3 tc">
+                <div class="flex-auto ph2 pv2 mw5-ns w-100 w-50-m w-third-l">
+                    <div class="pa3 tc h-100 flex flex-column">
                         <h3 class="f5 fw3 lh-title mb2 primary ttu">{{ .title }}</h3>
-                        <p class="f6 fw3 lh-copy gray">{{ .description }}</p>
+                        <p class="f6 fw3 lh-copy gray flex-auto">{{ .description }}</p>
                     </div>
                 </div>
                 {{ end }}
