@@ -3,7 +3,8 @@ backend:
   branch: 4dayweek
 media_folder: "site/static/img"
 public_folder: "img"
-
+editor:
+  preview: false
 collections:
   - name: "pages"
     label: "Pages"
