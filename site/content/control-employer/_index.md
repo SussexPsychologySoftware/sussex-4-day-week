@@ -15,7 +15,4 @@ benefits:
   - title: TAKE PART IN RESEARCH
     description: The opportunity for staff to opt-in to research tests, such as an
       MRI brain scan (reimbursement paid)
-  - title: Benefit 3
-    description: A focus group for your staff to help them increase productivity,
-      using lessons learned from studying the 4 day week.
 ---
