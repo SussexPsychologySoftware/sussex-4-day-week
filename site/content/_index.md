@@ -10,8 +10,7 @@ features:
     link_text: "FIND OUT MORE"
     link_url: "/how-it-works"
   - title: "JOIN THE UNIVERSITY OF SUSSEX PROGRAMME"
-    description: "If you’re a UK-based business, you might be eligible to join our shorter working week trial, and monitor the effect on staff wellbeing, performance, and business outcomes.
-    You can also take part as a 'control' employer, without a change to working schedules."
+    description: "If you’re a UK-based business, you might be eligible to join our shorter working week trial, and monitor the effect on staff wellbeing, performance, and business outcomes. You can also take part as a 'control' employer, without a change to working schedules."
     image: "/img/SussexInnovationImages-8.jpg"
     link_text: "REGISTER HERE"
     link_url: "/how-it-works"
