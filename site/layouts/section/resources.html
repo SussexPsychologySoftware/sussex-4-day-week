@@ -17,19 +17,17 @@
         <!-- Downloads Section -->
         {{ if .Params.downloads }}
         <div class="pv3">
-            <div class="cf">
-                {{ range .Params.downloads }}
-                <div class="fl w-100 w-50-l pa3">
-                    <div class="bg-white pa4 br2 h-100 ba b--light-gray tc">
-                        <h2 class="f4 fw3 lh-title mb3 primary ttu">{{ .title }}</h2>
-                        <p class="f6 fw3 lh-copy mb4">{{ .description }}</p>
-                        <a href="{{ .file }}" class="btn bg-primary white f6 link br1 ph3 pv2 dib" download>
-                            {{ .button_text }}
-                        </a>
-                    </div>
+            {{ range .Params.downloads }}
+            <div class="tc mb4">
+                <div class="bg-white pa4 br2 mw6 center ba b--light-gray">
+                    <h2 class="f4 fw3 lh-title mb3 primary ttu">{{ .title }}</h2>
+                    <p class="f6 fw3 lh-copy mb4">{{ .description }}</p>
+                    <a href="{{ .file }}" class="btn bg-primary white f6 link br1 ph3 pv2 mb3 dib" download>
+                        {{ .button_text }}
+                    </a>
                 </div>
-                {{ end }}
             </div>
+            {{ end }}
         </div>
         {{ end }}
 
