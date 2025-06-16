@@ -45,7 +45,7 @@ CMS.registerPreviewStyle(`
 CMS.registerPreviewTemplate("contact", ContactPreview);
 CMS.registerPreviewTemplate("control_employer", ControlEmployerPreview);
 CMS.registerPreviewTemplate("footer", FooterPreview);
-CMS.registerPreviewTemplate("home", HomePreview);
+CMS.registerPreviewTemplate("homepage", HomePreview);
 CMS.registerPreviewTemplate("how_it_works", HowItWorksPreview);
 CMS.registerPreviewTemplate("resources", ResourcesPreview);
 CMS.registerPreviewTemplate("signup", SignupPreview);

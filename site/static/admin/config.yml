@@ -9,28 +9,28 @@ collections:
     label: "Pages"
     files:
       # Homepage
-      # - file: "site/content/_index.md"
-      #   label: "Homepage"
-      #   name: "homepage"
-      #   fields:
-      #     - label: "Hero Section"
-      #       name: "hero"
-      #       widget: "object"
-      #       fields:
-      #         - {label: "Slogan", name: "slogan", widget: "string"}
-      #         - {label: "Description", name: "description", widget: "text"}
-      #     - label: "Feature Blocks"
-      #       name: "features"
-      #       widget: "list"
-      #       fields:
-      #         - {label: "Title", name: "title", widget: "string"}
-      #         - {label: "Description", name: "description", widget: "text"}
-      #         - {label: "Image", name: "image", widget: "image", required: false}
-      #         - {label: "YouTube Embed URL", name: "youtube_embed_src", widget: "string", required: false, hint: "Full YouTube embed URL"}
-      #         - {label: "Link Text", name: "link_text", widget: "string", required: false}
-      #         - {label: "Link URL", name: "link_url", widget: "string", required: false}
+      - file: "site/content/_index.md"
+        label: "Homepage"
+        name: "homepage"
+        fields:
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Slogan", name: "slogan", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - label: "Feature Blocks"
+            name: "features"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "YouTube Embed URL", name: "youtube_embed_src", widget: "string", required: false, hint: "Full YouTube embed URL" }
+              - { label: "Link Text", name: "link_text", widget: "string", required: false }
+              - { label: "Link URL", name: "link_url", widget: "string", required: false }
 
-      # Success Stories
+          # Success Stories
       - file: "site/content/success-stories/_index.md"
         label: "Success Stories"
         name: "success_stories"
