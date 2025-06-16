@@ -1,6 +1,7 @@
 import React from "react";
 
 const ControlEmployerPreview = ({entry, widgetFor}) => {
+  // Safe data extraction
   let data = {};
   try {
     data = entry?.getIn ? entry.getIn(["data"]).toJS() : {};
@@ -8,6 +9,7 @@ const ControlEmployerPreview = ({entry, widgetFor}) => {
     console.error("Error getting entry data:", error);
     data = {};
   }
+
   return (
     <div className="ph3 bg-off-white min-vh-100">
       <div className="center mw7 pv4">
@@ -22,14 +24,14 @@ const ControlEmployerPreview = ({entry, widgetFor}) => {
         </div>
 
         {/* Main Content */}
-        {widgetFor("body") && (
+        {widgetFor && widgetFor("body") && (
           <div className="lh-copy measure center mb4 f6 fw3">
             {widgetFor("body")}
           </div>
         )}
 
         {/* Benefits Section */}
-        {data.benefits && (
+        {data.benefits && Array.isArray(data.benefits) && (
           <div className="pv3">
             <div className="cf">
               {data.benefits.map((benefit, index) => (
@@ -39,10 +41,10 @@ const ControlEmployerPreview = ({entry, widgetFor}) => {
                 >
                   <div className="pa3 tc">
                     <h3 className="f5 fw3 lh-title mb2 primary ttu">
-                      {benefit.title || "Benefit Title"}
+                      {benefit?.title || "Benefit Title"}
                     </h3>
                     <p className="f6 fw3 lh-copy gray">
-                      {benefit.description || "Benefit description here."}
+                      {benefit?.description || "Benefit description here."}
                     </p>
                   </div>
                 </div>
@@ -55,16 +57,16 @@ const ControlEmployerPreview = ({entry, widgetFor}) => {
         <div className="tc pv4">
           <div className="bg-white pa4 br2 ba b--light-gray">
             <h2 className="f4 fw3 lh-title mb3 primary ttu">
-              Ready to Participate?
+                Ready to Participate?
             </h2>
             <p className="f6 fw3 lh-copy gray mb4 mw5 center">
-              Join our research programme and help advance understanding of workplace wellbeing and productivity.
+                Join our research programme and help advance understanding of workplace wellbeing and productivity.
             </p>
             <a
               href="/signup"
               className="btn bg-primary white f6 link br1 ph3 pv2 mb3 dib"
             >
-              Get Started
+                Get Started
             </a>
           </div>
         </div>
