@@ -18,49 +18,52 @@ resources:
   - button_text: READ MORE
     is_download: false
     link: https://4dayweek.netlify.app/articles/2025-06-18-new-blog-title/
-    description: "THIS ARTICLE IS GOOD onocanscnasoncdoasnjd conjsacdaojdscnja
+    description: >-
+      THIS ARTICLE IS GOOD onocanscnasoncdoasnjd conjsacdaojdscnja
       ascads  onocanscnasoncdoasnjd conjsacdaojdscnja ascads
       onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads
-      onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads
-      onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads "
+      conjsacdaojdscnja ascads 
+
+
+      onocanscnasoncdoasnjdconjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads 
     title: ARTICLE 1
-  - button_text: VIEW RESOURCE
+  - button_text: MORE
     is_download: false
-    title: ARTICLE 1
-    description: "THIS ARTICLE IS GOOD onocanscnasoncdoasnjd conjsacdaojdscnja
+    title: ARTICLE 2
+    description: >-
+      THIS ARTICLE IS GOOD onocanscnasoncdoasnjd conjsacdaojdscnja
       ascads  onocanscnasoncdoasnjd conjsacdaojdscnja ascads
       onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads
-      onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads
-      onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads "
+      conjsacdaojdscnja ascads 
+
+
+      onocanscnasoncdoasnjdconjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads 
     link: https://4dayweek.netlify.app/articles/2025-06-18-new-blog-title/
   - button_text: VIEW RESOURCE
     is_download: false
     title: ARTICLE 1
-    description: "THIS ARTICLE IS GOOD onocanscnasoncdoasnjd conjsacdaojdscnja
+    description: >-
+      THIS ARTICLE IS GOOD onocanscnasoncdoasnjd conjsacdaojdscnja
       ascads  onocanscnasoncdoasnjd conjsacdaojdscnja ascads
       onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads
-      onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads
-      onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads "
+      conjsacdaojdscnja ascads 
+
+
+      onocanscnasoncdoasnjdconjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads 
     link: https://4dayweek.netlify.app/articles/2025-06-18-new-blog-title/
   - button_text: VIEW RESOURCE
     is_download: false
-    description: "THIS ARTICLE IS GOOD onocanscnasoncdoasnjd conjsacdaojdscnja
+    description: >-
+      THIS ARTICLE IS GOOD onocanscnasoncdoasnjd conjsacdaojdscnja
       ascads  onocanscnasoncdoasnjd conjsacdaojdscnja ascads
       onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads
-      onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads
-      onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads "
+      conjsacdaojdscnja ascads 
+
+
+      onocanscnasoncdoasnjdconjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads 
+
+
+      asdcascd
     title: ARTICLE 1
     link: https://4dayweek.netlify.app/articles/2025-06-18-new-blog-title/
 partners:
