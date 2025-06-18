@@ -20,9 +20,9 @@
             <div class="flex flex-wrap justify-center">
                 {{ range .Params.resources }}
                 <div class="w-100 w-50-m w-third-l pa2 mw5">
-                    <div class="bg-white pa3 br2 h-100 ba b--light-gray tc">
-                        <h2 class="f6 fw4 lh-title mb2 primary ttu">{{ .title }}</h2>
-                        <p class="f7 fw3 lh-copy mb3">{{ .description }}</p>
+                    <div class="bg-white pa3 br2 ba b--grey-3 tc">
+                        <h2 class="f7 fw4 lh-title mb2 primary ttu">{{ .title }}</h2>
+                        <p class="f6 fw3 lh-copy mb3">{{ .description }}</p>
                         <a href="{{ .link }}"
                            class="btn bg-primary white f7 link br1 ph3 pv2 dib"
                            {{ if .is_download }}download{{ end }}
