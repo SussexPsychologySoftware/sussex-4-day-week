@@ -36,6 +36,27 @@
         </div>
         {{ end }}
 
+<!--        {{ $articles := where site.RegularPages "Section" "articles" }}-->
+<!--        {{ if $articles }}-->
+<!--        <div class="pv3">-->
+<!--            <h2 class="f4 fw3 lh-title mb4 primary ttu tc">Latest Articles</h2>-->
+<!--            <div class="cf">-->
+<!--                <div class="fl w-100 w-50-m w-third-l pa2">-->
+<!--                    <div class="bg-white pa3 br2 h-100 center ba b&#45;&#45;light-gray">-->
+<!--                        <h3 class="f5 fw3 lh-title mb2 primary">{{ .Title }}</h3>-->
+<!--                        <p class="f6 fw3 lh-copy mb3 gray">{{ .Date.Format "January 2, 2006" }}</p>-->
+<!--                        {{ if .Summary }}-->
+<!--                        <p class="f6 fw3 lh-copy mb3">{{ .Summary | truncate 100 }}</p>-->
+<!--                        {{ end }}-->
+<!--                        <a href="{{ .Permalink }}" class="btn bg-primary white f6 link br1 ph3 pv2 dib">-->
+<!--                            READ ARTICLE-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        {{ end }}-->
+
         <!-- Bottom Text -->
         {{ if .Params.bottom_text }}
         <div class="tc mb4">
