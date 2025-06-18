@@ -14,15 +14,18 @@
         </div>
         {{ end }}
 
-        <!-- Downloads Section -->
-        {{ if .Params.downloads }}
+        <!-- Resources Section -->
+        {{ if .Params.resources }}
         <div class="pv3">
-            {{ range .Params.downloads }}
+            {{ range .Params.resources }}
             <div class="tc mb4">
                 <div class="bg-white pa4 br2 mw6 center ba b--light-gray">
                     <h2 class="f4 fw3 lh-title mb3 primary ttu">{{ .title }}</h2>
                     <p class="f6 fw3 lh-copy mb4">{{ .description }}</p>
-                    <a href="{{ .file }}" class="btn bg-primary white f6 link br1 ph3 pv2 mb3 dib" download>
+                    <a href="{{ .link }}"
+                       class="btn bg-primary white f6 link br1 ph3 pv2 mb3 dib"
+                       {{ if .is_download }}download{{ end }}
+                       {{ if .is_download }}target="_self"{{ else }}target="_blank" rel="noopener"{{ end }}>
                         {{ .button_text }}
                     </a>
                 </div>

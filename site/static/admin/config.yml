@@ -170,14 +170,15 @@ collections:
           - { label: "Bottom Text", name: "bottom_text", widget: "text", required: false, hint: "Text that appears below the downloads section" }
 
           # Single Downloads Section
-          - label: "Downloads"
-            name: "downloads"
-            widget: "list"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "File", name: "file", widget: "file" }
-              - { label: "Button Text", name: "button_text", widget: "string", default: "DOWNLOAD" }
+      - label: "Resources"
+        name: "resources"
+        widget: "list"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Link/File", name: "link", widget: "string", hint: "URL for external link or path to file for download" }
+          - { label: "Button Text", name: "button_text", widget: "string", default: "VIEW RESOURCE" }
+          - { label: "Is Download", name: "is_download", widget: "boolean", default: false, hint: "Check if this should be a file download" }
 
           # Partners Section
           - label: "Partners"

@@ -5,15 +5,16 @@ bottom_text: We highly recommend these resources for learning more about how
   organisations around the world have implemented a 4 day week, and transformed
   wellbeing and workplace performance. Of course, you are also very welcome to
   ask us any questions!
-downloads:
+resources:
   - title: DOWNLOAD OUR FREE GUIDE
     description: Thinking about how a 4 day week might work for your business, but
       no idea where to start? We've got you covered with our guide to getting '4
       day week ready'. If you haven't already, sign up to our mailing list below
       to download our free guide with everything you need to know before getting
       started with a trial of the 4 day week!
-    file: /img/Sussex_4DW_Guide.pdf
+    link: /img/Sussex_4DW_Guide.pdf
     button_text: DOWNLOAD YOUR FREE GUIDE
+    is_download: true
 partners:
   - name: 4 Day Week Global Foundation
     logo: /img/4dayweekglobal.png
