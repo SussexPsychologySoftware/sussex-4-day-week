@@ -1,0 +1,20 @@
+{{ define "main" }}
+
+<!-- Hero Section -->
+{{ if .Params.title }}
+<div class="hero pt3 pt4-l ph3">
+    <div class="tc pb4">
+        <h1 class="f4 f3-l fw3 lh-title mb3 primary ttu">{{ .Title }}</h1>
+    </div>
+</div>
+{{ end }}
+
+<!-- Feature Blocks Section -->
+{{ if .Params.body }}
+<!-- Content Container -->
+<div class="feature-content">
+    <p class="f6 lh-copy fw3">{{ .Params.body }}</p>
+</div>
+{{ end }}
+
+{{ end }}
