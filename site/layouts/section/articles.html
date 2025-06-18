@@ -1,17 +1,38 @@
 {{ define "main" }}
 
 <div class="ph3 bg-off-white min-vh-100 center mw7 pv4">
-    {{ if .Title }}
     <div class="tc pb4">
         <h1 class="f4 f3-l fw3 lh-title mb3 primary ttu">{{ .Title }}</h1>
     </div>
-    {{ end }}
 
-    {{ if .Params.body }}
-    <div class="tc center mb4">
-        <p class="f6 fw3 mb3 center">{{ .Params.body }}</p>
+    <!-- Articles List -->
+    <div class="articles-list ph3 pb4">
+        <div class="mw8 center">
+            {{ range .Pages }}
+            <article class="bb b--light-gray pb4 mb4">
+                <h2 class="f3 fw6 mb2">
+                    <a href="{{ .Permalink }}" class="link primary hover-dark-gray">{{ .Title }}</a>
+                </h2>
+
+                <div class="f6 gray mb3">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">
+                    {{ .Date.Format "January 2, 2006" }}
+                    </time>
+                </div>
+
+                {{ if .Summary }}
+                <p class="f5 lh-copy gray mb3">{{ .Summary }}</p>
+                {{ end }}
+
+                <a href="{{ .Permalink }}" class="f6 fw6 link primary hover-dark-gray">
+                    Read More →
+                </a>
+            </article>
+            {{ else }}
+            <div class="tc pa4">
+                <p class="f5 gray">No articles published yet.</p>
+            </div>
+            {{ end }}
+        </div>
     </div>
-    {{ end }}
 </div>
-
-{{ end }}
