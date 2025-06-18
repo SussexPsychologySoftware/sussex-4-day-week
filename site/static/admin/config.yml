@@ -161,24 +161,24 @@ collections:
               - {label: "Success Message", name: "success_message", widget: "text", default: "Thank you for your message! We'll get back to you within 2 business days."}
               - {label: "Submit Button Text", name: "submit_text", widget: "string", default: "Send Message"}
 
-      - name: "resources"
+      - file: "site/content/resources/_index.md"
+        name: "resources"
         label: "Resources Page"
-        file: "site/content/resources/_index.md"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Hero Image", name: "hero_image", widget: "image" }
           - { label: "Bottom Text", name: "bottom_text", widget: "text", required: false, hint: "Text that appears below the downloads section" }
-
+          
           # Single Downloads Section
-      - label: "Resources"
-        name: "resources"
-        widget: "list"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-          - { label: "Link/File", name: "link", widget: "string", hint: "URL for external link or path to file for download" }
-          - { label: "Button Text", name: "button_text", widget: "string", default: "VIEW RESOURCE" }
-          - { label: "Is Download", name: "is_download", widget: "boolean", default: false, hint: "Check if this should be a file download" }
+          - name: "resources"
+            label: "Resources"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Link/File", name: "link", widget: "string", hint: "URL for external link or path to file for download" }
+              - { label: "Button Text", name: "button_text", widget: "string", default: "VIEW RESOURCE" }
+              - { label: "Is Download", name: "is_download", widget: "boolean", default: false, hint: "Check if this should be a file download" }
 
           # Partners Section
           - label: "Partners"
