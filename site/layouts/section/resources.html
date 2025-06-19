@@ -1,5 +1,9 @@
 {{ define "main" }}
-
+<style>
+    .break-word{
+        overflow-wrap: break-word
+    }
+</style>
 <div class="ph3 bg-off-white min-vh-100">
     <div class="center mw7 pv4">
         <!-- Page Header -->
@@ -20,7 +24,7 @@
             <div class="flex flex-wrap justify-center">
                 {{ range .Params.resources }}
                 <div class="w-100 w-50-m w-third-l pa2 mw5">
-                    <div class="bg-white pa3 br2 ba b--grey-3 tc">
+                    <div class="bg-white pa3 br2 ba b--grey-3 tc break-word">
                         <h2 class="f7 fw4 lh-title mb2 primary ttu">{{ .title }}</h2>
                         <p class="f6 fw3 lh-copy mb3">{{ .description }}</p>
                         <a href="{{ .link }}"
