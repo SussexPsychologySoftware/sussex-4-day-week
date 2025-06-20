@@ -15,57 +15,6 @@ resources:
     link: /img/Sussex_4DW_Guide.pdf
     button_text: DOWNLOAD YOUR FREE GUIDE
     is_download: true
-  - button_text: READ MORE
-    is_download: false
-    link: https://4dayweek.netlify.app/articles/2025-06-18-new-blog-title/
-    description: >-
-      THIS ARTICLE IS GOOD onocanscnasoncdoasnjd conjsacdaojdscnja
-      ascads  onocanscnasoncdoasnjd conjsacdaojdscnja ascads
-      onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads 
-
-
-      onocanscnasoncdoasnjdconjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads 
-    title: ARTICLE 1
-  - button_text: MORE
-    is_download: false
-    title: ARTICLE 2
-    description: >-
-      THIS ARTICLE IS GOOD onocanscnasoncdoasnjd conjsacdaojdscnja
-      ascads  onocanscnasoncdoasnjd conjsacdaojdscnja ascads
-      onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads 
-
-
-      onocanscnasoncdoasnjdconjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads 
-    link: https://4dayweek.netlify.app/articles/2025-06-18-new-blog-title/
-  - button_text: VIEW RESOURCE
-    is_download: false
-    title: ARTICLE 1
-    description: >-
-      THIS ARTICLE IS GOOD onocanscnasoncdoasnjd conjsacdaojdscnja
-      ascads  onocanscnasoncdoasnjd conjsacdaojdscnja ascads
-      onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads 
-
-
-      onocanscnasoncdoasnjdconjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads 
-    link: https://4dayweek.netlify.app/articles/2025-06-18-new-blog-title/
-  - button_text: VIEW RESOURCE
-    is_download: false
-    description: >-
-      THIS ARTICLE IS GOOD onocanscnasoncdoasnjd conjsacdaojdscnja
-      ascads  onocanscnasoncdoasnjd conjsacdaojdscnja ascads
-      onocanscnasoncdoasnjd conjsacdaojdscnja ascads onocanscnasoncdoasnjd
-      conjsacdaojdscnja ascads 
-
-
-      onocanscnasoncdoasnjdconjsacdaojdscnja ascads onocanscnasoncdoasnjd conjsacdaojdscnja ascads 
-
-
-      asdcascd
-    title: ARTICLE 1
-    link: https://4dayweek.netlify.app/articles/2025-06-18-new-blog-title/
 partners:
   - name: 4 Day Week Global Foundation
     logo: /img/4dayweekglobal.png
