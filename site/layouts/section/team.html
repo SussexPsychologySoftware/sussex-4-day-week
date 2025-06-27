@@ -26,7 +26,7 @@
             <div class="w-100 w-50-l pl0 pl4-l tl">
                 <h2 class="f3 fw3 lh-title mb3 primary ttu">{{ .name }}</h2>
                 <div class="f6 fw3 lh-copy gray">
-                    <p class="fw6 mb3">{{ .role }}</p>
+                    <p class="fw6 mb3 b">{{ .role }}</p>
                     <span class="mb3 db">{{ .bio | safeHTML }}</span>
                     {{ if .email }}
                     <p class="mb3">Get in touch: <a href="mailto:{{ .email }}" class="link primary">{{ .email }}</a></p>
