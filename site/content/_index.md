@@ -17,6 +17,6 @@ features:
   - title: "FIND OUT MORE ON OUR YOUTUBE"
     description: "Take a look at our S4DW videos and discover more about the 4 day work week over on our Youtube channel."
     youtube_embed_src: "https://www.youtube.com/embed/ydhM_VwFnFM?si=rZU5nyPeQJhy8J_e"
-    link_text: "VIEW STORIES"
-    link_url: "/success-stories"
+    link_text: "Our YouTube Channel"
+    link_url: "https://www.youtube.com/@Sussex4DayWeek"
 ---
