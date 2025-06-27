@@ -26,8 +26,8 @@
       "weight": 5
     },
     {
-      "name": "Contact Us",
-      "url": "/contact",
+      "name": "Join",
+      "url": "/signup",
       "weight": 6
     },
     {
@@ -36,8 +36,8 @@
       "weight": 7
     },
     {
-      "name": "Join",
-      "url": "/signup",
+      "name": "Contact Us",
+      "url": "/contact",
       "weight": 8
     }
   ],
