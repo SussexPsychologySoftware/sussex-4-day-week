@@ -1,0 +1,93 @@
+{{ define "main" }}
+<style>
+    .break-word{
+        overflow-wrap: break-word
+    }
+</style>
+<div class="ph3 bg-off-white min-vh-100">
+    <div class="center mw7 pv4">
+        <!-- Page Header -->
+        <div class="tc pb4">
+            <h1 class="f4 f3-l fw3 lh-title mb3 primary ttu">{{ .Title }}</h1>
+        </div>
+
+        <!-- Hero Image -->
+        {{ if .Params.hero_image }}
+        <div class="tc mb4">
+            <img src="{{ .Params.hero_image | default "/img/resources_hero.webp" }}" alt="Resources" class="w-75 w-60-m w-50-l br2 db center" />
+        </div>
+        {{ end }}
+
+        <!-- Resources Section -->
+        {{ if .Params.resources }}
+        <div class="pv3">
+            <div class="flex flex-wrap justify-center">
+                {{ range .Params.resources }}
+                <div class="w-100 w-50-m w-third-l pa2 mw5">
+                    <div class="bg-white pa3 br2 ba b--grey-3 tc break-word">
+                        <h2 class="f7 fw4 lh-title mb2 primary ttu">{{ .title }}</h2>
+                        <p class="f6 fw3 lh-copy mb3">{{ .description }}</p>
+                        <a href="{{ .link }}"
+                           class="btn bg-primary white f7 link br1 ph3 pv2 dib"
+                           {{ if .is_download }}download{{ end }}
+                           {{ if .is_download }}target="_self"{{ else }}target="_blank" rel="noopener"{{ end }}>
+                            {{ .button_text }}
+                        </a>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+<!--        {{ $articles := where site.RegularPages "Section" "articles" }}-->
+<!--        {{ if $articles }}-->
+<!--        <div class="pv3">-->
+<!--            <h2 class="f4 fw3 lh-title mb4 primary ttu tc">Latest Articles</h2>-->
+<!--            <div class="cf">-->
+<!--                <div class="fl w-100 w-50-m w-third-l pa2">-->
+<!--                    <div class="bg-white pa3 br2 h-100 center ba b&#45;&#45;light-gray">-->
+<!--                        <h3 class="f5 fw3 lh-title mb2 primary">{{ .Title }}</h3>-->
+<!--                        <p class="f6 fw3 lh-copy mb3 gray">{{ .Date.Format "January 2, 2006" }}</p>-->
+<!--                        {{ if .Summary }}-->
+<!--                        <p class="f6 fw3 lh-copy mb3">{{ .Summary | truncate 100 }}</p>-->
+<!--                        {{ end }}-->
+<!--                        <a href="{{ .Permalink }}" class="btn bg-primary white f6 link br1 ph3 pv2 dib">-->
+<!--                            READ ARTICLE-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        {{ end }}-->
+
+        <!-- Bottom Text -->
+        {{ if .Params.bottom_text }}
+        <div class="tc mb4">
+            <p class="f6 fw3 lh-copy measure center">{{ .Params.bottom_text }}</p>
+        </div>
+        {{ end }}
+
+        <!-- Partners Section -->
+        {{ if .Params.partners }}
+        <div class="pv3">
+            <h2 class="f4 fw3 lh-title mb4 primary ttu tc">Our Partners</h2>
+            <div class="cf">
+                {{ range .Params.partners }}
+                <div class="fl w-100 w-50-l pa3 tc">
+                    <img src="{{ .logo }}" alt="{{ .name }}" class="w-100 h3 db center mb2" style="object-fit: contain;" />
+                    <p class="f6 fw3">
+                        The <a href="{{ .website }}" class="link primary">{{ .name }}</a> {{ .text }}
+                        {{ if .extra_link }}
+                        <a href="{{ .extra_link }}" class="link primary">{{ .redirect_text }}</a>
+                        {{ end }}
+                    </p>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+
+{{ end }}

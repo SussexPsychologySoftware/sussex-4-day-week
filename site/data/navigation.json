@@ -36,6 +36,11 @@
       "weight": 7
     },
     {
+      "name": "Productivity Advice",
+      "url": "/productivity-advice",
+      "weight": 8
+    },
+    {
       "name": "Contact Us",
       "url": "/contact",
       "weight": 8
